@@ -106,7 +106,7 @@ public class GrupBox extends javax.swing.JFrame {
 
         jButton1.setText("Normal Button");
 
-        jToggleButton1.setText("jToggleButton1");
+        jToggleButton1.setText("Toggle Button ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

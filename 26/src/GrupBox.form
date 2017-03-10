@@ -225,7 +225,7 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="jToggleButton1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jToggleButton1"/>
+        <Property name="text" type="java.lang.String" value="Toggle Button "/>
       </Properties>
     </Component>
   </SubComponents>
