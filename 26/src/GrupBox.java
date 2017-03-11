@@ -43,13 +43,15 @@ public class GrupBox extends javax.swing.JFrame {
         CheckBox2 = new javax.swing.JCheckBox();
         CheckBox3 = new javax.swing.JCheckBox();
         ExclosiveRadioButton = new javax.swing.JCheckBox();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        CheckBoxButton = new javax.swing.JCheckBox();
         RadioButton4 = new javax.swing.JRadioButton();
         RadioButton5 = new javax.swing.JRadioButton();
         RadioButton6 = new javax.swing.JRadioButton();
         independentecheackbox = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        ButonNormal = new javax.swing.JButton();
+        ButtonToggle = new javax.swing.JToggleButton();
+        ButtonFlat = new javax.swing.JButton();
+        ButonPopup = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Group Box");
@@ -88,8 +90,13 @@ public class GrupBox extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setSelected(true);
-        jCheckBox1.setText("Push Buttons");
+        CheckBoxButton.setSelected(true);
+        CheckBoxButton.setText("Push Buttons");
+        CheckBoxButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckBoxButtonActionPerformed(evt);
+            }
+        });
 
         RadioGrup2.add(RadioButton4);
         RadioButton4.setSelected(true);
@@ -104,16 +111,21 @@ public class GrupBox extends javax.swing.JFrame {
         independentecheackbox.setSelected(true);
         independentecheackbox.setText("Independent checkbox");
 
-        jButton1.setText("Normal Button");
+        ButonNormal.setText("Normal Button");
 
-        jToggleButton1.setText("Toggle Button ");
+        ButtonToggle.setSelected(true);
+        ButtonToggle.setText("Toggle Button ");
+
+        ButtonFlat.setText("Flat Button");
+
+        ButonPopup.setText("Popup Button");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,29 +134,34 @@ public class GrupBox extends javax.swing.JFrame {
                             .addComponent(RadioButton6)
                             .addComponent(independentecheackbox)
                             .addComponent(RadioButton5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                        .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox1)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(CheckBox3)
                                         .addComponent(CheckBox2, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(CheckBox1, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(jButton1)
-                                    .addComponent(jToggleButton1)))))
+                                    .addComponent(CheckBoxButton)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(ButtonToggle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ButonPopup, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ButtonFlat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ButonNormal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(44, 44, 44))))
                     .addComponent(RadioButton1)
                     .addComponent(jLabel1)
                     .addComponent(RadioButton3)
                     .addComponent(RadioButton2))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -162,23 +179,29 @@ public class GrupBox extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(RadioButton3)
                             .addComponent(CheckBox3))
-                        .addGap(59, 59, 59)
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ExclosiveRadioButton)
-                            .addComponent(jCheckBox1))
+                            .addComponent(CheckBoxButton))
                         .addGap(18, 18, 18)
                         .addComponent(RadioButton4))
-                    .addComponent(jButton1))
+                    .addComponent(ButonNormal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RadioButton5)
-                    .addComponent(jToggleButton1))
+                    .addComponent(ButtonToggle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RadioButton6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RadioButton6)
+                    .addComponent(ButtonFlat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(independentecheackbox)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(independentecheackbox)
+                    .addComponent(ButonPopup))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ButonNormal, ButonPopup, ButtonFlat, ButtonToggle});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -208,6 +231,23 @@ public class GrupBox extends javax.swing.JFrame {
         CheckBox3.setEnabled(true);
         }
     }//GEN-LAST:event_CheckBox2ActionPerformed
+
+    private void CheckBoxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxButtonActionPerformed
+
+        // TODO add your handling code here:
+       
+        if (CheckBoxButton.isSelected()) {
+             ButonNormal.setEnabled(true);
+             ButonPopup.setEnabled(true);
+             ButtonFlat.setEnabled(true);
+             ButtonToggle.setEnabled(true);
+        }else{
+         ButonNormal.setEnabled(false);
+         ButonPopup.setEnabled(false);
+         ButtonFlat.setEnabled(false);
+         ButtonToggle.setEnabled(false);
+        }
+    }//GEN-LAST:event_CheckBoxButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,9 +286,14 @@ public class GrupBox extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButonNormal;
+    private javax.swing.JButton ButonPopup;
+    private javax.swing.JButton ButtonFlat;
+    private javax.swing.JToggleButton ButtonToggle;
     private javax.swing.JCheckBox CheckBox1;
     private javax.swing.JCheckBox CheckBox2;
     private javax.swing.JCheckBox CheckBox3;
+    private javax.swing.JCheckBox CheckBoxButton;
     private javax.swing.JCheckBox ExclosiveRadioButton;
     private javax.swing.JRadioButton RadioButton1;
     private javax.swing.JRadioButton RadioButton2;
@@ -259,10 +304,7 @@ public class GrupBox extends javax.swing.JFrame {
     private javax.swing.ButtonGroup RadioGrup1;
     private javax.swing.ButtonGroup RadioGrup2;
     private javax.swing.JCheckBox independentecheackbox;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
