@@ -45,6 +45,7 @@ public class Colors extends javax.swing.JFrame {
         Blue = new javax.swing.JRadioButton();
         Label = new javax.swing.JLabel();
         Boton = new javax.swing.JButton();
+        Col = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Select Color");
@@ -94,8 +95,13 @@ public class Colors extends javax.swing.JFrame {
                     .addComponent(Red)
                     .addComponent(Blue)
                     .addComponent(Boton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Label, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Label, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(Col, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
@@ -111,7 +117,9 @@ public class Colors extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Blue)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Boton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Boton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Col, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -120,14 +128,20 @@ public class Colors extends javax.swing.JFrame {
 
     private void RedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedActionPerformed
 
+        
+       
         // TODO add your handling code here:
         if (Red.isSelected()) {
            
          URL url = this.getClass().getResource("Red.png");
          ImageIcon Icono = new ImageIcon(url);
             Label.setIcon(Icono);
+            Col.setBackground(Color.red);
+            Col.setText("hola");
+            
         }else{
         Label.setIcon(null);
+         
         }
     }//GEN-LAST:event_RedActionPerformed
 
@@ -196,6 +210,7 @@ public class Colors extends javax.swing.JFrame {
     private javax.swing.JRadioButton Blue;
     private javax.swing.JButton Boton;
     private javax.swing.ButtonGroup ButonGrupColor;
+    private javax.swing.JLabel Col;
     private javax.swing.JRadioButton Green;
     private javax.swing.JLabel Label;
     private javax.swing.JRadioButton Red;
