@@ -49,6 +49,7 @@ public class Colors extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Select Color");
+        setBackground(new java.awt.Color(65, 65, 65));
 
         ButonGrupColor.add(Red);
         Red.setSelected(true);
