@@ -59,6 +59,32 @@
                               <Component id="PrecioTF3" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Component id="jSeparator1" alignment="0" min="-2" pref="440" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="Salir" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="GuardarTodo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="VerFacturaCompleta" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="MensajeTF" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jScrollPane1" min="-2" pref="443" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ErrorTL" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="CargarultimaFactura" alignment="1" min="-2" pref="172" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="Nfactura" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -78,39 +104,21 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="NfacturaTF" min="-2" pref="105" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="BuscarFactura" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="NombreTF" alignment="0" min="-2" pref="242" max="-2" attributes="0"/>
                               <Component id="ApellidosTF" alignment="0" max="32767" attributes="0"/>
                               <Component id="CiudadTF" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="jSeparator1" alignment="0" min="-2" pref="440" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
-                                  <Component id="MensajeTF" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="NombreTF" min="-2" pref="242" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButton1" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane1" min="-2" pref="443" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ErrorTL" max="32767" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="GuardarTodo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="CargarultimaFactura" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="Salir" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="VerFacturaCompleta" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -122,11 +130,13 @@
                   <Component id="NfacturaTF" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="Nfactura" alignment="3" max="32767" attributes="0"/>
                   <Component id="BuscarFactura" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CargarultimaFactura" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="NombreTF" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -185,7 +195,6 @@
                   <Component id="VerFacturaCompleta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Salir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="GuardarTodo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CargarultimaFactura" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -306,7 +315,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="CargarultimaFactura">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cargar la ultima Factura"/>
+        <Property name="text" type="java.lang.String" value="Cargar ultima Factura"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CargarultimaFacturaActionPerformed"/>
@@ -314,7 +323,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="BuscarFactura">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar Factura"/>
+        <Property name="text" type="java.lang.String" value="Buscar "/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarFacturaActionPerformed"/>
@@ -331,6 +340,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Observaciones"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Limpiar Todo"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
