@@ -7,20 +7,22 @@ public class Factura {
     String calle ;
     String ciudad ;
     String cP;
-    String ConseptoTF0;
-    String ConseptoTF1;
-    String ConseptoTF2;
-    String ConseptoTF3;
+    String conseptoTF0;
+    String conseptoTF1;
+    String conseptoTF2;
+    String conseptoTF3;
     
-    String ObservacionesTF;
+    String observacionesTF;
     
-    Double PrecioTF0;
-    Double PrecioTF1;
-    Double PrecioTF2;
-    Double PrecioTF3;
+    String precioTF0;
+    String precioTF1;
+    String precioTF2;
+    String precioTF3;
+    
+    int proba;
 
     String getFacturaCSV() {
-        String allFactura = numeroFactura +";"+ nombre +";"+ apellidos +";"+ calle +";"+ cP +";"+ ciudad  +";"+ConseptoTF0 +";"+ ConseptoTF1 +";"+ ConseptoTF2 +";"+ ConseptoTF3 + ";"+ PrecioTF0 +";"+PrecioTF0 +";"+ PrecioTF0 +";"+ PrecioTF0 +"\n";
+        String allFactura = numeroFactura +";"+ nombre +";"+ apellidos +";"+ calle +";"+ cP +";"+ ciudad   +";"+ conseptoTF0 +";"+ conseptoTF1 +";"+ conseptoTF2 +";"+ conseptoTF3 + ";"+ precioTF0 +";"+precioTF0 +";"+ precioTF0 +";"+ precioTF0 +"\n";
         return allFactura;
     }
     

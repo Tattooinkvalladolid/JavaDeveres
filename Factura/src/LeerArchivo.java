@@ -29,10 +29,15 @@ static ArrayList<Factura> leerFacturas(String fString){
                     miFactura.calle = facturasPorPartes[3];
                     miFactura.cP = facturasPorPartes[4];
                     miFactura.ciudad = facturasPorPartes[5];
-                    miFactura.ConseptoTF0 = facturasPorPartes[6];
-                    miFactura.ConseptoTF1 = facturasPorPartes[7];
-                    miFactura.ConseptoTF2 = facturasPorPartes[8];
-                    miFactura.ConseptoTF3 = facturasPorPartes[9];
+                    miFactura.conseptoTF0 = facturasPorPartes[6];
+                    miFactura.conseptoTF1 = facturasPorPartes[7];
+                    miFactura.conseptoTF2 = facturasPorPartes[8];
+                    miFactura.conseptoTF3 = facturasPorPartes[9];
+                    miFactura.conseptoTF3 = facturasPorPartes[9];
+                    miFactura.precioTF0 = facturasPorPartes[10];
+                    miFactura.precioTF1 = facturasPorPartes[11];
+                    miFactura.precioTF2 = facturasPorPartes[12];
+                    miFactura.precioTF3 = facturasPorPartes[13];
 
                     arrayFacturas.add(miFactura);
                 }

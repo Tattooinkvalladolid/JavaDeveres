@@ -338,54 +338,53 @@ Factura dataFactura = new Factura();
             ConseptoTF0.setBackground(Color.pink);
          }else{
              ConseptoTF0.setBackground(Color.WHITE);
-             dataFactura.ciudad = ConseptoTF0.getText();
+             dataFactura.conseptoTF0 = ConseptoTF0.getText();
         }
          if (ConseptoTF1.getText().equals("")) {
             ConseptoTF1.setBackground(Color.pink);
          }else{
              ConseptoTF1.setBackground(Color.WHITE);
-             dataFactura.ciudad = ConseptoTF1.getText();
+             dataFactura.conseptoTF1 = ConseptoTF1.getText();
         }
          if (ConseptoTF2.getText().equals("")) {
             ConseptoTF2.setBackground(Color.pink);
          }else{
              ConseptoTF2.setBackground(Color.WHITE);
-             dataFactura.ciudad = ConseptoTF2.getText();
+             dataFactura.conseptoTF2 = ConseptoTF2.getText();
         }
         if (ConseptoTF3.getText().equals("")) {
             ConseptoTF3.setBackground(Color.pink);
          }else{
              ConseptoTF3.setBackground(Color.WHITE);
-             dataFactura.ciudad = ConseptoTF3.getText();
+             dataFactura.conseptoTF3 = ConseptoTF3.getText();
         }
-        
-        if (PrecioTF0.getText().equals("")) {
+         if (PrecioTF0.getText().equals("")) {
             PrecioTF0.setBackground(Color.pink);
          }else{
              PrecioTF0.setBackground(Color.WHITE);
-             dataFactura.ciudad = PrecioTF0.getText();
+             dataFactura.precioTF0 = PrecioTF0.getText();    
         }
-        
-         if (PrecioTF1.getText().equals("")) {
+           if (PrecioTF1.getText().equals("")) {
             PrecioTF1.setBackground(Color.pink);
          }else{
              PrecioTF1.setBackground(Color.WHITE);
-             dataFactura.ciudad = PrecioTF1.getText();
+             dataFactura.precioTF1 = PrecioTF1.getText();    
         }
-         
-          if (PrecioTF2.getText().equals("")) {
-            PrecioTF2.setBackground(Color.pink);
+           if (PrecioTF2.getText().equals("")) {
+               PrecioTF2.setBackground(Color.pink);
          }else{
              PrecioTF2.setBackground(Color.WHITE);
-             dataFactura.ciudad = PrecioTF2.getText();
+             dataFactura.precioTF2 = PrecioTF2.getText();    
         }
-          
            if (PrecioTF3.getText().equals("")) {
             PrecioTF3.setBackground(Color.pink);
          }else{
              PrecioTF3.setBackground(Color.WHITE);
-             dataFactura.ciudad = PrecioTF3.getText();
+             dataFactura.precioTF3 = PrecioTF3.getText();    
         }
+        
+         
+       
           if ( CiudadTF.getText().equals("") && CpTF.getText().equals("")
                 && CalleTF.getText().equals("") && ApellidosTF.getText().equals("") 
                 && NombreTF.getText().equals("") && NfacturaTF.getText().equals("") 
@@ -458,60 +457,65 @@ Factura dataFactura = new Factura();
              dataFactura.ciudad = CiudadTF.getText();
         }
         
-         if (ConseptoTF0.getText().equals("")) {
-            ConseptoTF0.setBackground(Color.pink);
+         if (CiudadTF.getText().equals("")) {
+            CiudadTF.setBackground(Color.pink);
          }else{
-             ConseptoTF0.setBackground(Color.WHITE);
-             dataFactura.ciudad = ConseptoTF0.getText();
+             CiudadTF.setBackground(Color.WHITE);
+             dataFactura.ciudad = CiudadTF.getText();
         }
          
+         if (ConseptoTF0.getText().equals("")) {
+            ConseptoTF1.setBackground(Color.pink);
+         }else{
+             ConseptoTF0.setBackground(Color.WHITE);
+             dataFactura.conseptoTF0 = ConseptoTF0.getText();
+        }
          if (ConseptoTF1.getText().equals("")) {
             ConseptoTF1.setBackground(Color.pink);
          }else{
              ConseptoTF1.setBackground(Color.WHITE);
-             dataFactura.ciudad = ConseptoTF1.getText();
+             dataFactura.conseptoTF1 = ConseptoTF1.getText();
         }
-         if (ConseptoTF2.getText().equals("")) {
+        if (ConseptoTF2.getText().equals("")) {
             ConseptoTF2.setBackground(Color.pink);
          }else{
              ConseptoTF2.setBackground(Color.WHITE);
-             dataFactura.ciudad = ConseptoTF2.getText();
+             dataFactura.conseptoTF2 = ConseptoTF2.getText();
         }
-        if (ConseptoTF3.getText().equals("")) {
+         if (ConseptoTF3.getText().equals("")) {
             ConseptoTF3.setBackground(Color.pink);
          }else{
              ConseptoTF3.setBackground(Color.WHITE);
-             dataFactura.ciudad = ConseptoTF3.getText();
+             dataFactura.conseptoTF3 = ConseptoTF3.getText();
         }
+        
         
         if (PrecioTF0.getText().equals("")) {
             PrecioTF0.setBackground(Color.pink);
          }else{
              PrecioTF0.setBackground(Color.WHITE);
-             dataFactura.ciudad = PrecioTF0.getText();
+             dataFactura.precioTF0 = PrecioTF0.getText();    
         }
-        
-         if (PrecioTF1.getText().equals("")) {
+           if (PrecioTF1.getText().equals("")) {
             PrecioTF1.setBackground(Color.pink);
          }else{
              PrecioTF1.setBackground(Color.WHITE);
-             dataFactura.ciudad = PrecioTF1.getText();
+             dataFactura.precioTF1 = PrecioTF1.getText();    
         }
-         
-          if (PrecioTF2.getText().equals("")) {
-            PrecioTF2.setBackground(Color.pink);
+           if (PrecioTF2.getText().equals("")) {
+               PrecioTF2.setBackground(Color.pink);
          }else{
              PrecioTF2.setBackground(Color.WHITE);
-             dataFactura.ciudad = PrecioTF2.getText();
+             dataFactura.precioTF2 = PrecioTF2.getText();    
         }
-          
            if (PrecioTF3.getText().equals("")) {
             PrecioTF3.setBackground(Color.pink);
          }else{
              PrecioTF3.setBackground(Color.WHITE);
-             dataFactura.ciudad = PrecioTF3.getText();
+             dataFactura.precioTF3 = PrecioTF3.getText();    
         }
         
+        //Condicion para poder guardar. Campos obligatorios.
         if ( CiudadTF.getText().equals("") && CpTF.getText().equals("")
                 && CalleTF.getText().equals("") && ApellidosTF.getText().equals("") 
                 && NombreTF.getText().equals("") && NfacturaTF.getText().equals("") 
@@ -546,10 +550,14 @@ Factura dataFactura = new Factura();
                CalleTF.setText(miFactura.calle);
                CpTF.setText(miFactura.cP);
                CiudadTF.setText(miFactura.ciudad);
-               ConseptoTF0.setText(miFactura.ConseptoTF0);
-               ConseptoTF1.setText(miFactura.ConseptoTF1);
-               ConseptoTF2.setText(miFactura.ConseptoTF2);
-               ConseptoTF3.setText(miFactura.ConseptoTF3);
+               ConseptoTF0.setText(miFactura.conseptoTF0);
+               ConseptoTF1.setText(miFactura.conseptoTF1);
+               ConseptoTF2.setText(miFactura.conseptoTF2);
+               ConseptoTF3.setText(miFactura.conseptoTF3);
+               PrecioTF0.setText(miFactura.precioTF0);
+               PrecioTF1.setText(miFactura.precioTF1);
+               PrecioTF2.setText(miFactura.precioTF2);
+               PrecioTF3.setText(miFactura.precioTF3);
 
             } 
 
@@ -567,6 +575,13 @@ Factura dataFactura = new Factura();
                ConseptoTF1.setText("");
                ConseptoTF2.setText("");
                ConseptoTF3.setText("");
+               PrecioTF0.setText("");
+               PrecioTF1.setText("");
+               PrecioTF2.setText("");
+               PrecioTF3.setText("");
+               
+               
+               
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
