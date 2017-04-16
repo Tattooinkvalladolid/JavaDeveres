@@ -67,6 +67,11 @@ public class Tarea0 extends javax.swing.JFrame {
 
         buttonGroup1.add(Mensaje5);
         Mensaje5.setText("Mensaje 5");
+        Mensaje5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Mensaje5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,6 +150,10 @@ public class Tarea0 extends javax.swing.JFrame {
            
            }
     }//GEN-LAST:event_ButtonMostrarMensajeActionPerformed
+
+    private void Mensaje5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mensaje5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Mensaje5ActionPerformed
 
     /**
      * @param args the command line arguments
