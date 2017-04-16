@@ -38,6 +38,7 @@ static ArrayList<Factura> leerFacturas(String fString){
                     miFactura.precioTF1 = facturasPorPartes[11];
                     miFactura.precioTF2 = facturasPorPartes[12];
                     miFactura.precioTF3 = facturasPorPartes[13];
+                    miFactura.observacionesTF = facturasPorPartes[14];
 
                     arrayFacturas.add(miFactura);
                 }

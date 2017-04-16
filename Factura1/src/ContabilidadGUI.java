@@ -1,10 +1,15 @@
 
 
 import java.awt.Color;
+import static java.awt.image.ImageObserver.HEIGHT;
+import static java.awt.image.ImageObserver.WIDTH;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 
 
@@ -57,7 +62,7 @@ public class ContabilidadGUI extends javax.swing.JFrame {
         ConseptoTl = new javax.swing.JLabel();
         ConseptoTF0 = new javax.swing.JTextField();
         PrecioTF0 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        PrecioTF = new javax.swing.JLabel();
         ConseptoTF1 = new javax.swing.JTextField();
         PrecioTF1 = new javax.swing.JTextField();
         ConseptoTF2 = new javax.swing.JTextField();
@@ -75,6 +80,7 @@ public class ContabilidadGUI extends javax.swing.JFrame {
         MensajeTF = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        Top = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Factura Tattoo Ink Valladolid ");
@@ -106,7 +112,13 @@ public class ContabilidadGUI extends javax.swing.JFrame {
 
         ConseptoTl.setText("Consepto:               Al menos uno obligatorio");
 
-        jLabel5.setText("Precio:");
+        ConseptoTF0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConseptoTF0ActionPerformed(evt);
+            }
+        });
+
+        PrecioTF.setText("Precio:");
 
         ObservacionesTF.setColumns(20);
         ObservacionesTF.setRows(5);
@@ -156,69 +168,75 @@ public class ContabilidadGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ConseptoTF0, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ConseptoTl)
-                                .addComponent(ConseptoTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ConseptoTF2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ConseptoTF3, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(24, 24, 24)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addComponent(PrecioTF0, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(PrecioTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(PrecioTF2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(PrecioTF3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(Salir)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(GuardarTodo)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(VerFacturaCompleta))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addGap(35, 35, 35)
-                                    .addComponent(MensajeTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(ErrorTL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(35, 35, 35)
+                                .addComponent(MensajeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Salir)
+                                .addGap(426, 426, 426)))
+                        .addComponent(ErrorTL, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(CargarultimaFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Nfactura)
+                                    .addComponent(Nombre)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(CalleTF, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(CpTF, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(NfacturaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(BuscarFactura))
+                                    .addComponent(ApellidosTF)
+                                    .addComponent(CiudadTF)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(NombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(CargarultimaFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Nfactura)
-                                .addComponent(Nombre)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel2))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(GuardarTodo)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(CalleTF, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(CpTF, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(NfacturaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(BuscarFactura))
-                                .addComponent(ApellidosTF)
-                                .addComponent(CiudadTF)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(NombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                            .addComponent(VerFacturaCompleta))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ConseptoTF0, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ConseptoTl)
+                                    .addComponent(ConseptoTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ConseptoTF2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ConseptoTF3, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(PrecioTF)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(PrecioTF3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                                        .addComponent(PrecioTF2, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(PrecioTF1, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(PrecioTF0)))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Top, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(223, 223, 223))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,12 +266,14 @@ public class ContabilidadGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CiudadTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(24, 24, 24)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Top, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ConseptoTl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(PrecioTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ConseptoTF0)
@@ -294,95 +314,108 @@ Factura dataFactura = new Factura();
         //Recojer datos de todos los campos de texto
          if (NfacturaTF.getText().equals("")) {
             NfacturaTF.setBackground(Color.pink);
-         }else{
-             NfacturaTF.setBackground(Color.WHITE);
-             dataFactura.numeroFactura = NfacturaTF.getText();
+            }else{
+            NfacturaTF.setBackground(Color.WHITE);
+            dataFactura.numeroFactura = NfacturaTF.getText();
         }
          
         if (NombreTF.getText().equals("")) {
             NombreTF.setBackground(Color.pink);
-         }else{
+            }else{
             NombreTF.setBackground(Color.WHITE);
             dataFactura.nombre = NombreTF.getText();
         }
         
         if (ApellidosTF.getText().equals("")) {
             ApellidosTF.setBackground(Color.pink);
-         }else{
-             ApellidosTF.setBackground(Color.WHITE);
-             dataFactura.apellidos = ApellidosTF.getText();
+            }else{
+            ApellidosTF.setBackground(Color.WHITE);
+            dataFactura.apellidos = ApellidosTF.getText();
         }
         
         if (CalleTF.getText().equals("")) {
             CalleTF.setBackground(Color.pink);
-         }else{
+            }else{
             CalleTF.setBackground(Color.WHITE);
             dataFactura.calle = CalleTF.getText();
         }
          
         if (CpTF.getText().equals("")) {
             CpTF.setBackground(Color.pink);
-         }else{
-             CpTF.setBackground(Color.WHITE);
-             dataFactura.cP = CpTF.getText();
+            }else{
+            CpTF.setBackground(Color.WHITE);
+            dataFactura.cP = CpTF.getText();
         }
          
         if (CiudadTF.getText().equals("")) {
             CiudadTF.setBackground(Color.pink);
-         }else{
-             CiudadTF.setBackground(Color.WHITE);
-             dataFactura.ciudad = CiudadTF.getText();
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
         }
         
-         if (ConseptoTF0.getText().equals("")) {
+        if (ConseptoTF0.getText().equals("")) {
             ConseptoTF0.setBackground(Color.pink);
-         }else{
-             ConseptoTF0.setBackground(Color.WHITE);
-             dataFactura.conseptoTF0 = ConseptoTF0.getText();
+            }else{
+            ConseptoTF0.setBackground(Color.WHITE);
+            dataFactura.conseptoTF0 = ConseptoTF0.getText();
         }
-         if (ConseptoTF1.getText().equals("")) {
+        
+        if (ConseptoTF1.getText().equals("")) {
             ConseptoTF1.setBackground(Color.pink);
-         }else{
-             ConseptoTF1.setBackground(Color.WHITE);
-             dataFactura.conseptoTF1 = ConseptoTF1.getText();
+            }else{
+            ConseptoTF1.setBackground(Color.WHITE);
+            dataFactura.conseptoTF1 = ConseptoTF1.getText();
         }
-         if (ConseptoTF2.getText().equals("")) {
+         
+        if (ConseptoTF2.getText().equals("")) {
             ConseptoTF2.setBackground(Color.pink);
-         }else{
-             ConseptoTF2.setBackground(Color.WHITE);
-             dataFactura.conseptoTF2 = ConseptoTF2.getText();
+            }else{
+            ConseptoTF2.setBackground(Color.WHITE);
+            dataFactura.conseptoTF2 = ConseptoTF2.getText();
         }
+        
         if (ConseptoTF3.getText().equals("")) {
             ConseptoTF3.setBackground(Color.pink);
-         }else{
-             ConseptoTF3.setBackground(Color.WHITE);
-             dataFactura.conseptoTF3 = ConseptoTF3.getText();
-        }
-         if (PrecioTF0.getText().equals("")) {
-            PrecioTF0.setBackground(Color.pink);
-         }else{
-             PrecioTF0.setBackground(Color.WHITE);
-             dataFactura.precioTF0 = PrecioTF0.getText();    
-        }
-           if (PrecioTF1.getText().equals("")) {
-            PrecioTF1.setBackground(Color.pink);
-         }else{
-             PrecioTF1.setBackground(Color.WHITE);
-             dataFactura.precioTF1 = PrecioTF1.getText();    
-        }
-           if (PrecioTF2.getText().equals("")) {
-               PrecioTF2.setBackground(Color.pink);
-         }else{
-             PrecioTF2.setBackground(Color.WHITE);
-             dataFactura.precioTF2 = PrecioTF2.getText();    
-        }
-           if (PrecioTF3.getText().equals("")) {
-            PrecioTF3.setBackground(Color.pink);
-         }else{
-             PrecioTF3.setBackground(Color.WHITE);
-             dataFactura.precioTF3 = PrecioTF3.getText();    
+            }else{
+            ConseptoTF3.setBackground(Color.WHITE);
+            dataFactura.conseptoTF3 = ConseptoTF3.getText();
         }
         
+        if (PrecioTF0.getText().equals("")) {
+            PrecioTF0.setBackground(Color.pink);
+            }else{
+            PrecioTF0.setBackground(Color.WHITE);
+            dataFactura.precioTF0 = PrecioTF0.getText();    
+        }
+         
+        if (PrecioTF1.getText().equals("")) {
+            PrecioTF1.setBackground(Color.pink);
+            }else{
+            PrecioTF1.setBackground(Color.white);
+            dataFactura.precioTF1 = PrecioTF1.getText();
+        }
+         
+        if (PrecioTF2.getText().equals("")) {
+            PrecioTF2.setBackground(Color.pink);
+            }else{
+            PrecioTF2.setBackground(Color.white);
+             dataFactura.precioTF2 = PrecioTF2.getText();
+        }
+           
+        if (PrecioTF3.getText().equals("")) {
+            PrecioTF3.setBackground(Color.pink);
+            }else{
+            PrecioTF3.setBackground(Color.pink);
+            dataFactura.precioTF3 = PrecioTF3.getText();
+        }
+        if (ObservacionesTF.getText().equals("")) {
+            ObservacionesTF.setBackground(Color.pink);
+            }else{
+            ObservacionesTF.setBackground(Color.white);
+            dataFactura.observacionesTF = ObservacionesTF.getText();
+        }
+          
          
        
           if ( CiudadTF.getText().equals("") && CpTF.getText().equals("")
@@ -395,7 +428,7 @@ Factura dataFactura = new Factura();
             ){
             
              MensajeTF.setText("Rellena Todos los campos de color rosa");
-         }else{
+            }else{
              //Abrir una nueva ventana 
         dispose();
         FacturaCompleta NuevaVentana = new FacturaCompleta();
@@ -407,7 +440,164 @@ Factura dataFactura = new Factura();
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        
+      JDialog.setDefaultLookAndFeelDecorated(true);
+    int response = JOptionPane.showConfirmDialog(Top, "Quieres guardar antes de salir", "Mensaje Importante",
+        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    if (response == JOptionPane.NO_OPTION) {
+      
+      System.exit(0);
+    } else if (response == JOptionPane.YES_OPTION) {
+                 Factura dataFactura = new Factura();
+        //condiciones de texto en blanco
+        //Recojer datos de todos los campos de texto
+         if (NfacturaTF.getText().equals("")) {
+            NfacturaTF.setBackground(Color.pink);
+            }else{
+            NfacturaTF.setBackground(Color.WHITE);
+            dataFactura.numeroFactura = NfacturaTF.getText();
+        }
+         
+        if (NombreTF.getText().equals("")) {
+            NombreTF.setBackground(Color.pink);
+            }else{
+            NombreTF.setBackground(Color.WHITE);
+            dataFactura.nombre = NombreTF.getText();
+        }
+        
+        if (ApellidosTF.getText().equals("")) {
+            ApellidosTF.setBackground(Color.pink);
+            }else{
+            ApellidosTF.setBackground(Color.WHITE);
+            dataFactura.apellidos = ApellidosTF.getText();
+        }
+        
+        if (CalleTF.getText().equals("")) {
+            CalleTF.setBackground(Color.pink);
+            }else{
+            CalleTF.setBackground(Color.WHITE);
+            dataFactura.calle = CalleTF.getText();
+        }
+         
+        if (CpTF.getText().equals("")) {
+            CpTF.setBackground(Color.pink);
+            }else{
+            CpTF.setBackground(Color.WHITE);
+            dataFactura.cP = CpTF.getText();
+        }
+         
+        if (CiudadTF.getText().equals("")) {
+            CiudadTF.setBackground(Color.pink);
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
+        }
+        
+         if (CiudadTF.getText().equals("")) {
+            CiudadTF.setBackground(Color.pink);
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
+        }
+         
+         if (ConseptoTF0.getText().equals("")) {
+            ConseptoTF0.setBackground(Color.pink);
+            }else{
+            ConseptoTF0.setBackground(Color.WHITE);
+            dataFactura.conseptoTF0 = ConseptoTF0.getText();
+        }
+         
+         if (ConseptoTF1.getText().equals("")) {
+            ConseptoTF1.setBackground(Color.pink);
+            }else{
+            ConseptoTF1.setBackground(Color.WHITE);
+            dataFactura.conseptoTF1 = ConseptoTF1.getText();
+        }
+         
+        if (ConseptoTF2.getText().equals("")) {
+            ConseptoTF2.setBackground(Color.pink);
+            }else{
+            ConseptoTF2.setBackground(Color.WHITE);
+            dataFactura.conseptoTF2 = ConseptoTF2.getText();
+        }
+        
+         if (ConseptoTF3.getText().equals("")) {
+            ConseptoTF3.setBackground(Color.pink);
+            }else{
+            ConseptoTF3.setBackground(Color.WHITE);
+            dataFactura.conseptoTF3 = ConseptoTF3.getText();
+        }
+        
+        if (PrecioTF0.getText().equals("")) {
+            PrecioTF0.setBackground(Color.pink);
+            }else{
+            PrecioTF0.setBackground(Color.WHITE);
+            dataFactura.precioTF0 = PrecioTF0.getText();    
+        }
+         
+        if (PrecioTF1.getText().equals("")) {
+            PrecioTF1.setBackground(Color.pink);
+            }else{
+            PrecioTF1.setBackground(Color.white);
+            dataFactura.precioTF1 = PrecioTF1.getText();
+        }
+        
+        if (PrecioTF2.getText().equals("")) {
+            PrecioTF2.setBackground(Color.pink);
+            }else{
+            PrecioTF2.setBackground(Color.white);
+            dataFactura.precioTF2 = PrecioTF2.getText();
+         }
+        
+        if (PrecioTF3.getText().equals("")) {
+            PrecioTF3.setBackground(Color.pink);
+            }else{
+            PrecioTF3.setBackground(Color.white);
+            dataFactura.precioTF3 = PrecioTF3.getText();
+         }
+        
+        if (ObservacionesTF.getText().equals("")) {
+            ObservacionesTF.setBackground(Color.pink);
+            }else{
+            ObservacionesTF.setBackground(Color.white);
+            dataFactura.observacionesTF = ObservacionesTF.getText();
+            }
+        //Condicion para poder guardar. Campos obligatorios.
+        if ( CiudadTF.getText().equals("") && CpTF.getText().equals("")
+                && CalleTF.getText().equals("") && ApellidosTF.getText().equals("") 
+                && NombreTF.getText().equals("") && NfacturaTF.getText().equals("") 
+                && ConseptoTF0.getText().equals("") && PrecioTF1.getText().equals("")
+            ){
+            
+            String multiLineMsg[] = { "Antes de guardar los campos color rosa", " Deven de estar rellenos" };
+    JOptionPane pane = new JOptionPane();
+    pane.setMessage(multiLineMsg);
+    JDialog d = pane.createDialog(Top, "Informacion");
+    d.setVisible(true);
+   
+
+           
+            }else{
+             //Guardar todos los datos en un archivo CSV
+            Guardar guardar = new Guardar();
+            guardar.guardarFactura(dataFactura.getFacturaCSV());
+            MensajeTF.setText("");
+        } 
+    } else if (response == JOptionPane.CANCEL_OPTION) {
+      System.out.println("boton Cansel");
+    } else if (response == JOptionPane.CLOSED_OPTION) {
+      System.out.println("boton x"); 
+        }
+        
+
+        
+        
+        //ImageIcon icon = new ImageIcon(getClass().getResource("ico.png"));
+            //JOptionPane.showConfirmDialog(Salir, "Quieres salir sin guardar ?", "Mensaje informativo" , WIDTH, HEIGHT);
+           
+     /*   if (JOptionPane.NO_OPTION) {
+            System.exit(0);
+        }*/
     }//GEN-LAST:event_SalirActionPerformed
 
     private void GuardarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarTodoActionPerformed
@@ -417,115 +607,126 @@ Factura dataFactura = new Factura();
         //Recojer datos de todos los campos de texto
          if (NfacturaTF.getText().equals("")) {
             NfacturaTF.setBackground(Color.pink);
-         }else{
-             NfacturaTF.setBackground(Color.WHITE);
-             dataFactura.numeroFactura = NfacturaTF.getText();
+            }else{
+            NfacturaTF.setBackground(Color.WHITE);
+            dataFactura.numeroFactura = NfacturaTF.getText();
         }
          
         if (NombreTF.getText().equals("")) {
             NombreTF.setBackground(Color.pink);
-         }else{
+            }else{
             NombreTF.setBackground(Color.WHITE);
             dataFactura.nombre = NombreTF.getText();
         }
         
         if (ApellidosTF.getText().equals("")) {
             ApellidosTF.setBackground(Color.pink);
-         }else{
-             ApellidosTF.setBackground(Color.WHITE);
-             dataFactura.apellidos = ApellidosTF.getText();
+            }else{
+            ApellidosTF.setBackground(Color.WHITE);
+            dataFactura.apellidos = ApellidosTF.getText();
         }
         
         if (CalleTF.getText().equals("")) {
             CalleTF.setBackground(Color.pink);
-         }else{
+            }else{
             CalleTF.setBackground(Color.WHITE);
             dataFactura.calle = CalleTF.getText();
         }
          
         if (CpTF.getText().equals("")) {
             CpTF.setBackground(Color.pink);
-         }else{
-             CpTF.setBackground(Color.WHITE);
-             dataFactura.cP = CpTF.getText();
+            }else{
+            CpTF.setBackground(Color.WHITE);
+            dataFactura.cP = CpTF.getText();
         }
          
         if (CiudadTF.getText().equals("")) {
             CiudadTF.setBackground(Color.pink);
-         }else{
-             CiudadTF.setBackground(Color.WHITE);
-             dataFactura.ciudad = CiudadTF.getText();
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
         }
         
          if (CiudadTF.getText().equals("")) {
             CiudadTF.setBackground(Color.pink);
-         }else{
-             CiudadTF.setBackground(Color.WHITE);
-             dataFactura.ciudad = CiudadTF.getText();
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
         }
          
          if (ConseptoTF0.getText().equals("")) {
-            ConseptoTF1.setBackground(Color.pink);
-         }else{
-             ConseptoTF0.setBackground(Color.WHITE);
-             dataFactura.conseptoTF0 = ConseptoTF0.getText();
+            ConseptoTF0.setBackground(Color.pink);
+            }else{
+            ConseptoTF0.setBackground(Color.WHITE);
+            dataFactura.conseptoTF0 = ConseptoTF0.getText();
         }
+         
          if (ConseptoTF1.getText().equals("")) {
             ConseptoTF1.setBackground(Color.pink);
-         }else{
-             ConseptoTF1.setBackground(Color.WHITE);
-             dataFactura.conseptoTF1 = ConseptoTF1.getText();
+            }else{
+            ConseptoTF1.setBackground(Color.WHITE);
+            dataFactura.conseptoTF1 = ConseptoTF1.getText();
         }
+         
         if (ConseptoTF2.getText().equals("")) {
             ConseptoTF2.setBackground(Color.pink);
-         }else{
-             ConseptoTF2.setBackground(Color.WHITE);
-             dataFactura.conseptoTF2 = ConseptoTF2.getText();
-        }
-         if (ConseptoTF3.getText().equals("")) {
-            ConseptoTF3.setBackground(Color.pink);
-         }else{
-             ConseptoTF3.setBackground(Color.WHITE);
-             dataFactura.conseptoTF3 = ConseptoTF3.getText();
+            }else{
+            ConseptoTF2.setBackground(Color.WHITE);
+            dataFactura.conseptoTF2 = ConseptoTF2.getText();
         }
         
+         if (ConseptoTF3.getText().equals("")) {
+            ConseptoTF3.setBackground(Color.pink);
+            }else{
+            ConseptoTF3.setBackground(Color.WHITE);
+            dataFactura.conseptoTF3 = ConseptoTF3.getText();
+        }
         
         if (PrecioTF0.getText().equals("")) {
             PrecioTF0.setBackground(Color.pink);
-         }else{
-             PrecioTF0.setBackground(Color.WHITE);
-             dataFactura.precioTF0 = PrecioTF0.getText();    
+            }else{
+            PrecioTF0.setBackground(Color.WHITE);
+            dataFactura.precioTF0 = PrecioTF0.getText();    
         }
-           if (PrecioTF1.getText().equals("")) {
+         
+        if (PrecioTF1.getText().equals("")) {
             PrecioTF1.setBackground(Color.pink);
-         }else{
-             PrecioTF1.setBackground(Color.WHITE);
-             dataFactura.precioTF1 = PrecioTF1.getText();    
-        }
-           if (PrecioTF2.getText().equals("")) {
-               PrecioTF2.setBackground(Color.pink);
-         }else{
-             PrecioTF2.setBackground(Color.WHITE);
-             dataFactura.precioTF2 = PrecioTF2.getText();    
-        }
-           if (PrecioTF3.getText().equals("")) {
-            PrecioTF3.setBackground(Color.pink);
-         }else{
-             PrecioTF3.setBackground(Color.WHITE);
-             dataFactura.precioTF3 = PrecioTF3.getText();    
+            }else{
+            PrecioTF1.setBackground(Color.white);
+            dataFactura.precioTF1 = PrecioTF1.getText();
         }
         
+        if (PrecioTF2.getText().equals("")) {
+            PrecioTF2.setBackground(Color.pink);
+            }else{
+            PrecioTF2.setBackground(Color.white);
+            dataFactura.precioTF2 = PrecioTF2.getText();
+         }
+        
+        if (PrecioTF3.getText().equals("")) {
+            PrecioTF3.setBackground(Color.pink);
+            }else{
+            PrecioTF3.setBackground(Color.white);
+            dataFactura.precioTF3 = PrecioTF3.getText();
+         }
+        
+        if (ObservacionesTF.getText().equals("")) {
+            ObservacionesTF.setBackground(Color.pink);
+            }else{
+            ObservacionesTF.setBackground(Color.white);
+            dataFactura.observacionesTF = ObservacionesTF.getText();
+            }
         //Condicion para poder guardar. Campos obligatorios.
         if ( CiudadTF.getText().equals("") && CpTF.getText().equals("")
                 && CalleTF.getText().equals("") && ApellidosTF.getText().equals("") 
                 && NombreTF.getText().equals("") && NfacturaTF.getText().equals("") 
-                && ConseptoTF0.getText().equals("") && PrecioTF0.getText().equals("")
+                && ConseptoTF0.getText().equals("") && PrecioTF1.getText().equals("")
             ){
             
              MensajeTF.setText("Rellena Todos los campos de color rosa");
-         }else{
+            }else{
              //Guardar todos los datos en un archivo CSV
-           Guardar guardar = new Guardar();
+            Guardar guardar = new Guardar();
             guardar.guardarFactura(dataFactura.getFacturaCSV());
             MensajeTF.setText("");
         }      
@@ -558,7 +759,8 @@ Factura dataFactura = new Factura();
                PrecioTF1.setText(miFactura.precioTF1);
                PrecioTF2.setText(miFactura.precioTF2);
                PrecioTF3.setText(miFactura.precioTF3);
-
+               ObservacionesTF.setText(miFactura.observacionesTF);
+        
             } 
 
     }//GEN-LAST:event_CargarultimaFacturaActionPerformed
@@ -579,10 +781,14 @@ Factura dataFactura = new Factura();
                PrecioTF1.setText("");
                PrecioTF2.setText("");
                PrecioTF3.setText("");
-               
+               ObservacionesTF.setText("");
                
                
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ConseptoTF0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConseptoTF0ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConseptoTF0ActionPerformed
 
     /**
      * @param rgs the command line arguments
@@ -642,18 +848,19 @@ Factura dataFactura = new Factura();
     private javax.swing.JLabel Nombre;
     private javax.swing.JTextField NombreTF;
     private javax.swing.JTextArea ObservacionesTF;
+    private javax.swing.JLabel PrecioTF;
     private javax.swing.JTextField PrecioTF0;
     private javax.swing.JTextField PrecioTF1;
     private javax.swing.JTextField PrecioTF2;
     private javax.swing.JTextField PrecioTF3;
     private javax.swing.JButton Salir;
+    private javax.swing.JLabel Top;
     private javax.swing.JButton VerFacturaCompleta;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

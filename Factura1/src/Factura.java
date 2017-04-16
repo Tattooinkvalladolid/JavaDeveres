@@ -22,7 +22,7 @@ public class Factura {
     int proba;
 
     String getFacturaCSV() {
-        String allFactura = numeroFactura +";"+ nombre +";"+ apellidos +";"+ calle +";"+ cP +";"+ ciudad   +";"+ conseptoTF0 +";"+ conseptoTF1 +";"+ conseptoTF2 +";"+ conseptoTF3 + ";"+ precioTF0 +";"+precioTF0 +";"+ precioTF0 +";"+ precioTF0 +"\n";
+        String allFactura = numeroFactura +";"+ nombre +";"+ apellidos +";"+ calle +";"+ cP +";"+ ciudad   +";"+ conseptoTF0 +";"+ conseptoTF1 +";"+ conseptoTF2 +";"+ conseptoTF3 + ";"+ precioTF0 + ";"+ precioTF1  +";"+ precioTF2 +";"+ precioTF3 + ";" + observacionesTF+"\n";
         return allFactura;
     }
     
