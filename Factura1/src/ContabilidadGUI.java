@@ -581,23 +581,15 @@ Factura dataFactura = new Factura();
              //Guardar todos los datos en un archivo CSV
             Guardar guardar = new Guardar();
             guardar.guardarFactura(dataFactura.getFacturaCSV());
-            MensajeTF.setText("");
+            
+            System.exit(0);
         } 
     } else if (response == JOptionPane.CANCEL_OPTION) {
-      System.out.println("boton Cansel");
+      //System.out.println("boton Cansel");
     } else if (response == JOptionPane.CLOSED_OPTION) {
-      System.out.println("boton x"); 
+     // System.out.println("boton x"); 
         }
         
-
-        
-        
-        //ImageIcon icon = new ImageIcon(getClass().getResource("ico.png"));
-            //JOptionPane.showConfirmDialog(Salir, "Quieres salir sin guardar ?", "Mensaje informativo" , WIDTH, HEIGHT);
-           
-     /*   if (JOptionPane.NO_OPTION) {
-            System.exit(0);
-        }*/
     }//GEN-LAST:event_SalirActionPerformed
 
     private void GuardarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarTodoActionPerformed
@@ -733,7 +725,9 @@ Factura dataFactura = new Factura();
     }//GEN-LAST:event_GuardarTodoActionPerformed
 
     private void BuscarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarFacturaActionPerformed
-        // TODO add your handling code here:
+        //Busqueda de archivos:
+        
+        
     }//GEN-LAST:event_BuscarFacturaActionPerformed
 
     private void CargarultimaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarultimaFacturaActionPerformed
