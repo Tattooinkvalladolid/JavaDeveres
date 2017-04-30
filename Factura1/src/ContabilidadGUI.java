@@ -727,11 +727,15 @@ Factura dataFactura = new Factura();
     private void BuscarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarFacturaActionPerformed
         //Busqueda de archivos:
         
+        BuscarGUI bus = new BuscarGUI();
+        bus.setVisible(true);
+            
         
     }//GEN-LAST:event_BuscarFacturaActionPerformed
 
     private void CargarultimaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarultimaFacturaActionPerformed
 
+        
         
         // TODO add your handling code here:
         
