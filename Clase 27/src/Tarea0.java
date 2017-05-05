@@ -64,6 +64,11 @@ public class Tarea0 extends javax.swing.JFrame {
 
         buttonGroup1.add(Mensaje4);
         Mensaje4.setText("Mensaje 4");
+        Mensaje4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Mensaje4ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(Mensaje5);
         Mensaje5.setText("Mensaje 5");
@@ -154,6 +159,11 @@ public class Tarea0 extends javax.swing.JFrame {
     private void Mensaje5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mensaje5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Mensaje5ActionPerformed
+
+    private void Mensaje4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mensaje4ActionPerformed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Mensaje4ActionPerformed
 
     /**
      * @param args the command line arguments
