@@ -1,7 +1,7 @@
 
 public class Factura {
 
-    String numeroFactura ;
+  public  String numeroFactura ="0" ;
     String nombre ;
     String apellidos ;
     String calle ;
@@ -14,10 +14,10 @@ public class Factura {
     
     String observacionesTF;
     
-    String precioTF0;
-    String precioTF1;
-    String precioTF2;
-    String precioTF3;
+    String precioTF0="0,0";
+    String precioTF1="0,0";
+    String precioTF2="0,0";
+    String precioTF3="0,0";
     
     int proba;
 

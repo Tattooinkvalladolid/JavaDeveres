@@ -14,7 +14,7 @@ public class Guardar   {
             
        
         try{  
-            writer = new FileWriter(ContabilidadGUI.guardarArchivo);
+            writer = new FileWriter("todasFacturas.CSV",true);
             writer.write(Guardar);
        
             }catch(IOException e){ 

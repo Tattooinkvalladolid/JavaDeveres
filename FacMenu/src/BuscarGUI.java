@@ -47,6 +47,11 @@ public class BuscarGUI extends javax.swing.JFrame {
         });
 
         BuscarBoton.setText("Buscar");
+        BuscarBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarBotonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,6 +90,14 @@ public class BuscarGUI extends javax.swing.JFrame {
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void BuscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarBotonActionPerformed
+
+        // TODO add your handling code here:
+        
+      Buscar a =new Buscar();
+        Buscar a1 = a;
+    }//GEN-LAST:event_BuscarBotonActionPerformed
 
     /**
      * @param args the command line arguments

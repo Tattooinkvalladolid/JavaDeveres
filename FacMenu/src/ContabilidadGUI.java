@@ -1,13 +1,19 @@
 
-
 import java.awt.Color;
+import static java.awt.image.ImageObserver.HEIGHT;
+import static java.awt.image.ImageObserver.WIDTH;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-
-
-
-
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,15 +26,13 @@ import javax.swing.JOptionPane;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class ContabilidadGUI extends javax.swing.JFrame {
-    
-    public static String guardarArchivo = "nomina.CSV";
 
     /**
      * Creates new form FacturaGUI
      */
     public ContabilidadGUI() {
         initComponents();
-       
+        BuscarFactura.setEnabled(false);
     }
     
 
@@ -41,6 +45,7 @@ public class ContabilidadGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         Nfactura = new javax.swing.JLabel();
         NfacturaTF = new javax.swing.JTextField();
         VerFacturaCompleta = new javax.swing.JButton();
@@ -67,6 +72,8 @@ public class ContabilidadGUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ObservacionesTF = new javax.swing.JTextArea();
         CpTF = new javax.swing.JTextField();
+        nombreRB = new javax.swing.JRadioButton();
+        nFacturaRB = new javax.swing.JRadioButton();
         ErrorTL = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
         GuardarTodo = new javax.swing.JButton();
@@ -74,31 +81,16 @@ public class ContabilidadGUI extends javax.swing.JFrame {
         MensajeTF = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         Top = new javax.swing.JLabel();
-        Backgraund = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        Archivos = new javax.swing.JMenu();
-        CrearNuevaFacturaMenu = new javax.swing.JMenuItem();
-        AbrirFacturaMenu = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        GuardarFacturaMenu = new javax.swing.JMenuItem();
+        BuscarMunu = new javax.swing.JMenuItem();
         CargarUltimaFacturaMenu = new javax.swing.JMenuItem();
+        LimpiarPantallaMenu = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        GuardarMenu = new javax.swing.JMenuItem();
-        CuardarComoMenu = new javax.swing.JMenuItem();
-        LimpiarMenu = new javax.swing.JMenuItem();
-        jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        ImprimirMenu = new javax.swing.JMenuItem();
-        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         SalirMenu = new javax.swing.JMenuItem();
-        Editar = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jSeparator5 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        Help = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Factura Tattoo Ink Valladolid ");
@@ -116,14 +108,14 @@ public class ContabilidadGUI extends javax.swing.JFrame {
         getContentPane().add(NfacturaTF);
         NfacturaTF.setBounds(120, 10, 105, 24);
 
-        VerFacturaCompleta.setText("Ver Factura");
+        VerFacturaCompleta.setText("Ver ultima Factura");
         VerFacturaCompleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VerFacturaCompletaActionPerformed(evt);
             }
         });
         getContentPane().add(VerFacturaCompleta);
-        VerFacturaCompleta.setBounds(384, 625, 100, 32);
+        VerFacturaCompleta.setBounds(340, 620, 144, 32);
 
         Nombre.setText("Nombre:");
         getContentPane().add(Nombre);
@@ -193,6 +185,26 @@ public class ContabilidadGUI extends javax.swing.JFrame {
         jScrollPane1.setBounds(44, 380, 440, 239);
         getContentPane().add(CpTF);
         CpTF.setBounds(372, 104, 112, 24);
+
+        buttonGroup1.add(nombreRB);
+        nombreRB.setText("Nombre");
+        nombreRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreRBActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nombreRB);
+        nombreRB.setBounds(320, 10, 84, 25);
+
+        buttonGroup1.add(nFacturaRB);
+        nFacturaRB.setText("N-Factura");
+        nFacturaRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nFacturaRBActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nFacturaRB);
+        nFacturaRB.setBounds(230, 10, 110, 25);
         getContentPane().add(ErrorTL);
         ErrorTL.setBounds(527, 342, 17, 32);
 
@@ -212,7 +224,7 @@ public class ContabilidadGUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(GuardarTodo);
-        GuardarTodo.setBounds(299, 625, 79, 32);
+        GuardarTodo.setBounds(250, 620, 79, 32);
 
         BuscarFactura.setText("Buscar ");
         BuscarFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -221,7 +233,7 @@ public class ContabilidadGUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BuscarFactura);
-        BuscarFactura.setBounds(231, 6, 75, 32);
+        BuscarFactura.setBounds(400, 10, 80, 32);
 
         MensajeTF.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(MensajeTF);
@@ -233,135 +245,69 @@ public class ContabilidadGUI extends javax.swing.JFrame {
         getContentPane().add(Top);
         Top.setBounds(290, 164, 37, 13);
 
-        Backgraund.setForeground(new java.awt.Color(100, 100, 100));
-        Backgraund.setIcon(new javax.swing.ImageIcon(getClass().getResource("/office_excel.png"))); // NOI18N
-        getContentPane().add(Backgraund);
-        Backgraund.setBounds(420, 0, 60, 70);
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Office 30 Porcen.png"))); // NOI18N
+        jLabel5.setText("jLabel5");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(-840, -870, 1510, 2173);
+        jLabel5.setBounds(-480, 0, 1140, 730);
 
-        Archivos.setText("Archivos");
+        jMenu1.setText("Archivo");
 
-        CrearNuevaFacturaMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
-        CrearNuevaFacturaMenu.setText("Crear Nueva Factura");
-        CrearNuevaFacturaMenu.addActionListener(new java.awt.event.ActionListener() {
+        GuardarFacturaMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.META_MASK));
+        GuardarFacturaMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nuevoArchivo.png"))); // NOI18N
+        GuardarFacturaMenu.setText("Guardar Factura");
+        GuardarFacturaMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrearNuevaFacturaMenuActionPerformed(evt);
+                GuardarFacturaMenuActionPerformed(evt);
             }
         });
-        Archivos.add(CrearNuevaFacturaMenu);
+        jMenu1.add(GuardarFacturaMenu);
 
-        AbrirFacturaMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        AbrirFacturaMenu.setText("Abrir Factura");
-        Archivos.add(AbrirFacturaMenu);
+        BuscarMunu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.META_MASK));
+        BuscarMunu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lupa-para-buscar.png"))); // NOI18N
+        BuscarMunu.setText("Buscar Factura");
+        BuscarMunu.setEnabled(false);
+        BuscarMunu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarMunuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(BuscarMunu);
 
-        CargarUltimaFacturaMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK | java.awt.event.InputEvent.META_MASK));
-        CargarUltimaFacturaMenu.setText("Cargar ultima Factura");
+        CargarUltimaFacturaMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.META_MASK));
+        CargarUltimaFacturaMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/marca-de-cargando.png"))); // NOI18N
+        CargarUltimaFacturaMenu.setText("Cargar Ultima Factura");
         CargarUltimaFacturaMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CargarUltimaFacturaMenuActionPerformed(evt);
             }
         });
-        Archivos.add(CargarUltimaFacturaMenu);
-        Archivos.add(jSeparator2);
+        jMenu1.add(CargarUltimaFacturaMenu);
 
-        GuardarMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.META_MASK));
-        GuardarMenu.setText("Guardar ");
-        GuardarMenu.setEnabled(false);
-        GuardarMenu.addActionListener(new java.awt.event.ActionListener() {
+        LimpiarPantallaMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.META_MASK));
+        LimpiarPantallaMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/escobilla-de-suelo.png"))); // NOI18N
+        LimpiarPantallaMenu.setText("Limpiar patilla");
+        LimpiarPantallaMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarMenuActionPerformed(evt);
+                LimpiarPantallaMenuActionPerformed(evt);
             }
         });
-        Archivos.add(GuardarMenu);
+        jMenu1.add(LimpiarPantallaMenu);
+        jMenu1.add(jSeparator2);
 
-        CuardarComoMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK | java.awt.event.InputEvent.META_MASK));
-        CuardarComoMenu.setText("Guardar como");
-        CuardarComoMenu.setEnabled(false);
-        CuardarComoMenu.setFocusTraversalKeysEnabled(false);
-        CuardarComoMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CuardarComoMenuActionPerformed(evt);
-            }
-        });
-        Archivos.add(CuardarComoMenu);
-
-        LimpiarMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.META_MASK));
-        LimpiarMenu.setText("Limpiar");
-        LimpiarMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimpiarMenuActionPerformed(evt);
-            }
-        });
-        Archivos.add(LimpiarMenu);
-        Archivos.add(jSeparator3);
-
-        ImprimirMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        ImprimirMenu.setText("Imprimir");
-        ImprimirMenu.setEnabled(false);
-        Archivos.add(ImprimirMenu);
-        Archivos.add(jSeparator4);
-
-        SalirMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK | java.awt.event.InputEvent.META_MASK));
+        SalirMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.ALT_MASK));
+        SalirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salida.png"))); // NOI18N
         SalirMenu.setText("Salir");
         SalirMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirMenuActionPerformed(evt);
             }
         });
-        Archivos.add(SalirMenu);
+        jMenu1.add(SalirMenu);
 
-        jMenuBar1.add(Archivos);
+        jMenuBar1.add(jMenu1);
 
-        Editar.setText("Editar");
-
-        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.META_MASK));
-        jMenuItem8.setText("Cortar");
-        jMenuItem8.setEnabled(false);
-        Editar.add(jMenuItem8);
-
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.META_MASK));
-        jMenuItem9.setText("Copiar");
-        jMenuItem9.setEnabled(false);
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        Editar.add(jMenuItem9);
-
-        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.META_MASK));
-        jMenuItem10.setText("Pegar");
-        jMenuItem10.setEnabled(false);
-        Editar.add(jMenuItem10);
-        Editar.add(jSeparator5);
-
-        jMenuItem13.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.META_MASK));
-        jMenuItem13.setText("Buscar");
-        Editar.add(jMenuItem13);
-
-        jMenuItem14.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK | java.awt.event.InputEvent.META_MASK));
-        jMenuItem14.setText("Ver Factura");
-        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem14ActionPerformed(evt);
-            }
-        });
-        Editar.add(jMenuItem14);
-
-        jMenuBar1.add(Editar);
-
-        Help.setText("Help");
-
-        jMenuItem11.setText("Informacion");
-        Help.add(jMenuItem11);
-
-        jMenuItem12.setText("Nosotros");
-        Help.add(jMenuItem12);
-
-        jMenuBar1.add(Help);
+        jMenu2.setText("Ayuda");
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -369,8 +315,7 @@ public class ContabilidadGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VerFacturaCompletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerFacturaCompletaActionPerformed
-
-        Factura dataFactura = new Factura();
+Factura dataFactura = new Factura();
         //condiciones de texto en blanco
         //Recojer datos de todos los campos de texto
          if (NfacturaTF.getText().equals("")) {
@@ -786,10 +731,330 @@ public class ContabilidadGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_GuardarTodoActionPerformed
 
     private void BuscarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarFacturaActionPerformed
-        //Busqueda de archivos:
         
-        BuscarGUI bus = new BuscarGUI();
-        bus.setVisible(true);
+        if (nFacturaRB.isSelected()) {
+        
+             ArrayList<Factura> miFacturas = LeerArchivo.leerFacturas("todasFacturas.csv");
+             for (Factura miFactura : miFacturas) {
+               if (NfacturaTF.getText().equals(miFactura.numeroFactura)) {
+                   
+                   
+                     NfacturaTF.setText(miFactura.numeroFactura);
+               NombreTF.setText(miFactura.nombre);
+               ApellidosTF.setText(miFactura.apellidos);
+               CalleTF.setText(miFactura.calle);
+               CpTF.setText(miFactura.cP);
+               CiudadTF.setText(miFactura.ciudad);
+               ConseptoTF0.setText(miFactura.conseptoTF0);
+               ConseptoTF1.setText(miFactura.conseptoTF1);
+               ConseptoTF2.setText(miFactura.conseptoTF2);
+               ConseptoTF3.setText(miFactura.conseptoTF3);
+               PrecioTF0.setText(miFactura.precioTF0);
+               PrecioTF1.setText(miFactura.precioTF1);
+               PrecioTF2.setText(miFactura.precioTF2);
+               PrecioTF3.setText(miFactura.precioTF3);
+               ObservacionesTF.setText(miFactura.observacionesTF);
+               break;
+               
+               } 
+               
+            }   
+        
+        Factura dataFactura = new Factura();
+        //condiciones de texto en blanco
+        //Recojer datos de todos los campos de texto
+         if (NfacturaTF.getText().equals("")) {
+            NfacturaTF.setBackground(Color.pink);
+            }else{
+            NfacturaTF.setBackground(Color.WHITE);
+            dataFactura.numeroFactura = NfacturaTF.getText();
+        }
+         
+        if (NombreTF.getText().equals("")) {
+            NombreTF.setBackground(Color.pink);
+            }else{
+            NombreTF.setBackground(Color.WHITE);
+            dataFactura.nombre = NombreTF.getText();
+        }
+        
+        if (ApellidosTF.getText().equals("")) {
+            ApellidosTF.setBackground(Color.pink);
+            }else{
+            ApellidosTF.setBackground(Color.WHITE);
+            dataFactura.apellidos = ApellidosTF.getText();
+        }
+        
+        if (CalleTF.getText().equals("")) {
+            CalleTF.setBackground(Color.pink);
+            }else{
+            CalleTF.setBackground(Color.WHITE);
+            dataFactura.calle = CalleTF.getText();
+        }
+         
+        if (CpTF.getText().equals("")) {
+            CpTF.setBackground(Color.pink);
+            }else{
+            CpTF.setBackground(Color.WHITE);
+            dataFactura.cP = CpTF.getText();
+        }
+         
+        if (CiudadTF.getText().equals("")) {
+            CiudadTF.setBackground(Color.pink);
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
+        }
+        
+         if (CiudadTF.getText().equals("")) {
+            CiudadTF.setBackground(Color.pink);
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
+        }
+         
+         if (ConseptoTF0.getText().equals("")) {
+            ConseptoTF0.setBackground(Color.pink);
+            }else{
+            ConseptoTF0.setBackground(Color.WHITE);
+            dataFactura.conseptoTF0 = ConseptoTF0.getText();
+        }
+         
+         if (ConseptoTF1.getText().equals("")) {
+            ConseptoTF1.setBackground(Color.pink);
+            }else{
+            ConseptoTF1.setBackground(Color.WHITE);
+            dataFactura.conseptoTF1 = ConseptoTF1.getText();
+        }
+         
+        if (ConseptoTF2.getText().equals("")) {
+            ConseptoTF2.setBackground(Color.pink);
+            }else{
+            ConseptoTF2.setBackground(Color.WHITE);
+            dataFactura.conseptoTF2 = ConseptoTF2.getText();
+        }
+        
+         if (ConseptoTF3.getText().equals("")) {
+            ConseptoTF3.setBackground(Color.pink);
+            }else{
+            ConseptoTF3.setBackground(Color.WHITE);
+            dataFactura.conseptoTF3 = ConseptoTF3.getText();
+        }
+        
+        if (PrecioTF0.getText().equals("")) {
+            PrecioTF0.setBackground(Color.pink);
+            }else{
+            PrecioTF0.setBackground(Color.WHITE);
+            dataFactura.precioTF0 = PrecioTF0.getText();    
+        }
+         
+        if (PrecioTF1.getText().equals("")) {
+            PrecioTF1.setBackground(Color.pink);
+            }else{
+            PrecioTF1.setBackground(Color.white);
+            dataFactura.precioTF1 = PrecioTF1.getText();
+        }
+        
+        if (PrecioTF2.getText().equals("")) {
+            PrecioTF2.setBackground(Color.pink);
+            }else{
+            PrecioTF2.setBackground(Color.white);
+            dataFactura.precioTF2 = PrecioTF2.getText();
+         }
+        
+        if (PrecioTF3.getText().equals("")) {
+            PrecioTF3.setBackground(Color.pink);
+            }else{
+            PrecioTF3.setBackground(Color.white);
+            dataFactura.precioTF3 = PrecioTF3.getText();
+         }
+        
+        if (ObservacionesTF.getText().equals("")) {
+            ObservacionesTF.setBackground(Color.pink);
+            }else{
+            ObservacionesTF.setBackground(Color.white);
+            dataFactura.observacionesTF = ObservacionesTF.getText();
+            }
+        //Condicion para poder guardar. Campos obligatorios.
+        if ( CiudadTF.getText().equals("") && CpTF.getText().equals("")
+                && CalleTF.getText().equals("") && ApellidosTF.getText().equals("") 
+                && NombreTF.getText().equals("") && NfacturaTF.getText().equals("") 
+                && ConseptoTF0.getText().equals("") && PrecioTF1.getText().equals("")
+            ){
+            
+             MensajeTF.setText("Rellena Todos los campos de color rosa");
+            }else{
+             //Guardar todos los datos en un archivo CSV
+            Temp guardar = new Temp();
+            guardar.guardarFactura(dataFactura.getFacturaCSV());
+            MensajeTF.setText("");
+                  
+             //dispose();
+        verFactura NuevaVentana = new verFactura();
+        NuevaVentana.setVisible(true);
+        
+        }  
+        }
+        
+        if (nombreRB.isSelected()) {
+            
+             ArrayList<Factura> miFacturas = LeerArchivo.leerFacturas("todasFacturas.csv");
+             for (Factura miFactura : miFacturas) {
+                 
+               if (NombreTF.getText().equals(miFactura.nombre)) {
+                   
+                     NfacturaTF.setText(miFactura.numeroFactura);
+               NombreTF.setText(miFactura.nombre);
+               ApellidosTF.setText(miFactura.apellidos);
+               CalleTF.setText(miFactura.calle);
+               CpTF.setText(miFactura.cP);
+               CiudadTF.setText(miFactura.ciudad);
+               ConseptoTF0.setText(miFactura.conseptoTF0);
+               ConseptoTF1.setText(miFactura.conseptoTF1);
+               ConseptoTF2.setText(miFactura.conseptoTF2);
+               ConseptoTF3.setText(miFactura.conseptoTF3);
+               PrecioTF0.setText(miFactura.precioTF0);
+               PrecioTF1.setText(miFactura.precioTF1);
+               PrecioTF2.setText(miFactura.precioTF2);
+               PrecioTF3.setText(miFactura.precioTF3);
+               ObservacionesTF.setText(miFactura.observacionesTF);
+               break;
+               }
+            } 
+              Factura dataFactura = new Factura();
+        //condiciones de texto en blanco
+        //Recojer datos de todos los campos de texto
+         if (NfacturaTF.getText().equals("")) {
+            NfacturaTF.setBackground(Color.pink);
+            }else{
+            NfacturaTF.setBackground(Color.WHITE);
+            dataFactura.numeroFactura = NfacturaTF.getText();
+        }
+         
+        if (NombreTF.getText().equals("")) {
+            NombreTF.setBackground(Color.pink);
+            }else{
+            NombreTF.setBackground(Color.WHITE);
+            dataFactura.nombre = NombreTF.getText();
+        }
+        
+        if (ApellidosTF.getText().equals("")) {
+            ApellidosTF.setBackground(Color.pink);
+            }else{
+            ApellidosTF.setBackground(Color.WHITE);
+            dataFactura.apellidos = ApellidosTF.getText();
+        }
+        
+        if (CalleTF.getText().equals("")) {
+            CalleTF.setBackground(Color.pink);
+            }else{
+            CalleTF.setBackground(Color.WHITE);
+            dataFactura.calle = CalleTF.getText();
+        }
+         
+        if (CpTF.getText().equals("")) {
+            CpTF.setBackground(Color.pink);
+            }else{
+            CpTF.setBackground(Color.WHITE);
+            dataFactura.cP = CpTF.getText();
+        }
+         
+        if (CiudadTF.getText().equals("")) {
+            CiudadTF.setBackground(Color.pink);
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
+        }
+        
+         if (CiudadTF.getText().equals("")) {
+            CiudadTF.setBackground(Color.pink);
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
+        }
+         
+         if (ConseptoTF0.getText().equals("")) {
+            ConseptoTF0.setBackground(Color.pink);
+            }else{
+            ConseptoTF0.setBackground(Color.WHITE);
+            dataFactura.conseptoTF0 = ConseptoTF0.getText();
+        }
+         
+         if (ConseptoTF1.getText().equals("")) {
+            ConseptoTF1.setBackground(Color.pink);
+            }else{
+            ConseptoTF1.setBackground(Color.WHITE);
+            dataFactura.conseptoTF1 = ConseptoTF1.getText();
+        }
+         
+        if (ConseptoTF2.getText().equals("")) {
+            ConseptoTF2.setBackground(Color.pink);
+            }else{
+            ConseptoTF2.setBackground(Color.WHITE);
+            dataFactura.conseptoTF2 = ConseptoTF2.getText();
+        }
+        
+         if (ConseptoTF3.getText().equals("")) {
+            ConseptoTF3.setBackground(Color.pink);
+            }else{
+            ConseptoTF3.setBackground(Color.WHITE);
+            dataFactura.conseptoTF3 = ConseptoTF3.getText();
+        }
+        
+        if (PrecioTF0.getText().equals("")) {
+            PrecioTF0.setBackground(Color.pink);
+            }else{
+            PrecioTF0.setBackground(Color.WHITE);
+            dataFactura.precioTF0 = PrecioTF0.getText();    
+        }
+         
+        if (PrecioTF1.getText().equals("")) {
+            PrecioTF1.setBackground(Color.pink);
+            }else{
+            PrecioTF1.setBackground(Color.white);
+            dataFactura.precioTF1 = PrecioTF1.getText();
+        }
+        
+        if (PrecioTF2.getText().equals("")) {
+            PrecioTF2.setBackground(Color.pink);
+            }else{
+            PrecioTF2.setBackground(Color.white);
+            dataFactura.precioTF2 = PrecioTF2.getText();
+         }
+        
+        if (PrecioTF3.getText().equals("")) {
+            PrecioTF3.setBackground(Color.pink);
+            }else{
+            PrecioTF3.setBackground(Color.white);
+            dataFactura.precioTF3 = PrecioTF3.getText();
+         }
+        
+        if (ObservacionesTF.getText().equals("")) {
+            ObservacionesTF.setBackground(Color.pink);
+            }else{
+            ObservacionesTF.setBackground(Color.white);
+            dataFactura.observacionesTF = ObservacionesTF.getText();
+            }
+        //Condicion para poder guardar. Campos obligatorios.
+        if ( CiudadTF.getText().equals("") && CpTF.getText().equals("")
+                && CalleTF.getText().equals("") && ApellidosTF.getText().equals("") 
+                && NombreTF.getText().equals("") && NfacturaTF.getText().equals("") 
+                && ConseptoTF0.getText().equals("") && PrecioTF1.getText().equals("")
+            ){
+            
+             MensajeTF.setText("Rellena Todos los campos de color rosa");
+            }else{
+             //Guardar todos los datos en un archivo CSV
+            Temp guardar = new Temp();
+            guardar.guardarFactura(dataFactura.getFacturaCSV());
+            MensajeTF.setText("");
+                  
+             //dispose();
+        verFactura NuevaVentana = new verFactura();
+        NuevaVentana.setVisible(true);
+        
+        } 
+        }
+        
             
         
     }//GEN-LAST:event_BuscarFacturaActionPerformed
@@ -798,17 +1063,143 @@ public class ContabilidadGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ConseptoTF0ActionPerformed
 
-    private void CuardarComoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuardarComoMenuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CuardarComoMenuActionPerformed
+    private void GuardarFacturaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarFacturaMenuActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+        
+        
+        Factura dataFactura = new Factura();
+        //condiciones de texto en blanco
+        //Recojer datos de todos los campos de texto
+         if (NfacturaTF.getText().equals("")) {
+            NfacturaTF.setBackground(Color.pink);
+            }else{
+            NfacturaTF.setBackground(Color.WHITE);
+            dataFactura.numeroFactura = NfacturaTF.getText();
+        }
+         
+        if (NombreTF.getText().equals("")) {
+            NombreTF.setBackground(Color.pink);
+            }else{
+            NombreTF.setBackground(Color.WHITE);
+            dataFactura.nombre = NombreTF.getText();
+        }
+        
+        if (ApellidosTF.getText().equals("")) {
+            ApellidosTF.setBackground(Color.pink);
+            }else{
+            ApellidosTF.setBackground(Color.WHITE);
+            dataFactura.apellidos = ApellidosTF.getText();
+        }
+        
+        if (CalleTF.getText().equals("")) {
+            CalleTF.setBackground(Color.pink);
+            }else{
+            CalleTF.setBackground(Color.WHITE);
+            dataFactura.calle = CalleTF.getText();
+        }
+         
+        if (CpTF.getText().equals("")) {
+            CpTF.setBackground(Color.pink);
+            }else{
+            CpTF.setBackground(Color.WHITE);
+            dataFactura.cP = CpTF.getText();
+        }
+         
+        if (CiudadTF.getText().equals("")) {
+            CiudadTF.setBackground(Color.pink);
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
+        }
+        
+         if (CiudadTF.getText().equals("")) {
+            CiudadTF.setBackground(Color.pink);
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
+        }
+         
+         if (ConseptoTF0.getText().equals("")) {
+            ConseptoTF0.setBackground(Color.pink);
+            }else{
+            ConseptoTF0.setBackground(Color.WHITE);
+            dataFactura.conseptoTF0 = ConseptoTF0.getText();
+        }
+         
+         if (ConseptoTF1.getText().equals("")) {
+            ConseptoTF1.setBackground(Color.pink);
+            }else{
+            ConseptoTF1.setBackground(Color.WHITE);
+            dataFactura.conseptoTF1 = ConseptoTF1.getText();
+        }
+         
+        if (ConseptoTF2.getText().equals("")) {
+            ConseptoTF2.setBackground(Color.pink);
+            }else{
+            ConseptoTF2.setBackground(Color.WHITE);
+            dataFactura.conseptoTF2 = ConseptoTF2.getText();
+        }
+        
+         if (ConseptoTF3.getText().equals("")) {
+            ConseptoTF3.setBackground(Color.pink);
+            }else{
+            ConseptoTF3.setBackground(Color.WHITE);
+            dataFactura.conseptoTF3 = ConseptoTF3.getText();
+        }
+        
+        if (PrecioTF0.getText().equals("")) {
+            PrecioTF0.setBackground(Color.pink);
+            }else{
+            PrecioTF0.setBackground(Color.WHITE);
+            dataFactura.precioTF0 = PrecioTF0.getText();    
+        }
+         
+        if (PrecioTF1.getText().equals("")) {
+            PrecioTF1.setBackground(Color.pink);
+            }else{
+            PrecioTF1.setBackground(Color.white);
+            dataFactura.precioTF1 = PrecioTF1.getText();
+        }
+        
+        if (PrecioTF2.getText().equals("")) {
+            PrecioTF2.setBackground(Color.pink);
+            }else{
+            PrecioTF2.setBackground(Color.white);
+            dataFactura.precioTF2 = PrecioTF2.getText();
+         }
+        
+        if (PrecioTF3.getText().equals("")) {
+            PrecioTF3.setBackground(Color.pink);
+            }else{
+            PrecioTF3.setBackground(Color.white);
+            dataFactura.precioTF3 = PrecioTF3.getText();
+         }
+        
+        if (ObservacionesTF.getText().equals("")) {
+            ObservacionesTF.setBackground(Color.pink);
+            }else{
+            ObservacionesTF.setBackground(Color.white);
+            dataFactura.observacionesTF = ObservacionesTF.getText();
+            }
+        //Condicion para poder guardar. Campos obligatorios.
+        if ( CiudadTF.getText().equals("") && CpTF.getText().equals("")
+                && CalleTF.getText().equals("") && ApellidosTF.getText().equals("") 
+                && NombreTF.getText().equals("") && NfacturaTF.getText().equals("") 
+                && ConseptoTF0.getText().equals("") && PrecioTF1.getText().equals("")
+            ){
+            
+             MensajeTF.setText("Rellena Todos los campos de color rosa");
+            }else{
+             //Guardar todos los datos en un archivo CSV
+            Guardar guardar = new Guardar();
+            guardar.guardarFactura(dataFactura.getFacturaCSV());
+            MensajeTF.setText("");
+        }              // TODO add your handling code here:
+    }//GEN-LAST:event_GuardarFacturaMenuActionPerformed
 
     private void SalirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirMenuActionPerformed
-
- JDialog.setDefaultLookAndFeelDecorated(true);
+    
+      JDialog.setDefaultLookAndFeelDecorated(true);
     int response = JOptionPane.showConfirmDialog(Top, "Quieres guardar antes de salir", "Mensaje Importante",
         JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
     if (response == JOptionPane.NO_OPTION) {
@@ -953,13 +1344,29 @@ public class ContabilidadGUI extends javax.swing.JFrame {
         } }        // TODO add your handling code here:
     }//GEN-LAST:event_SalirMenuActionPerformed
 
+    private void LimpiarPantallaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarPantallaMenuActionPerformed
+  // TODO add your handling code here:
+               NfacturaTF.setText("");
+               NombreTF.setText("");
+               ApellidosTF.setText("");
+               CalleTF.setText("");
+               CpTF.setText("");
+               CiudadTF.setText("");
+               ConseptoTF0.setText("");
+               ConseptoTF1.setText("");
+               ConseptoTF2.setText("");
+               ConseptoTF3.setText("");
+               PrecioTF0.setText("");
+               PrecioTF1.setText("");
+               PrecioTF2.setText("");
+               PrecioTF3.setText("");
+               ObservacionesTF.setText("");
+               
+                       // TODO add your handling code here:
+    }//GEN-LAST:event_LimpiarPantallaMenuActionPerformed
+
     private void CargarUltimaFacturaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarUltimaFacturaMenuActionPerformed
-        // TODO add your handling code here:
-          
-        
-        // TODO add your handling code here:
-        
-        ArrayList<Factura> miFacturas = LeerArchivo.leerFacturas(guardarArchivo);
+ ArrayList<Factura> miFacturas = LeerArchivo.leerFacturas("todasFacturas.csv");
 
 
            for (Factura miFactura : miFacturas) {
@@ -979,163 +1386,39 @@ public class ContabilidadGUI extends javax.swing.JFrame {
                PrecioTF3.setText(miFactura.precioTF3);
                ObservacionesTF.setText(miFactura.observacionesTF);
         
-            } 
+            }         // TODO add your handling code here:
     }//GEN-LAST:event_CargarUltimaFacturaMenuActionPerformed
 
-    private void LimpiarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarMenuActionPerformed
+    private void BuscarMunuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarMunuActionPerformed
         // TODO add your handling code here:
-              NfacturaTF.setText("");
-               NombreTF.setText("");
-               ApellidosTF.setText("");
-               CalleTF.setText("");
-               CpTF.setText("");
-               CiudadTF.setText("");
-               ConseptoTF0.setText("");
-               ConseptoTF1.setText("");
-               ConseptoTF2.setText("");
-               ConseptoTF3.setText("");
-               PrecioTF0.setText("");
-               PrecioTF1.setText("");
-               PrecioTF2.setText("");
-               PrecioTF3.setText("");
-               ObservacionesTF.setText("");
+       if (nFacturaRB.isSelected()) {
+        
+             ArrayList<Factura> miFacturas = LeerArchivo.leerFacturas("todasFacturas.csv");
+             for (Factura miFactura : miFacturas) {
+               if (NfacturaTF.getText().equals(miFactura.numeroFactura)) {
+                   
+                   
+                     NfacturaTF.setText(miFactura.numeroFactura);
+               NombreTF.setText(miFactura.nombre);
+               ApellidosTF.setText(miFactura.apellidos);
+               CalleTF.setText(miFactura.calle);
+               CpTF.setText(miFactura.cP);
+               CiudadTF.setText(miFactura.ciudad);
+               ConseptoTF0.setText(miFactura.conseptoTF0);
+               ConseptoTF1.setText(miFactura.conseptoTF1);
+               ConseptoTF2.setText(miFactura.conseptoTF2);
+               ConseptoTF3.setText(miFactura.conseptoTF3);
+               PrecioTF0.setText(miFactura.precioTF0);
+               PrecioTF1.setText(miFactura.precioTF1);
+               PrecioTF2.setText(miFactura.precioTF2);
+               PrecioTF3.setText(miFactura.precioTF3);
+               ObservacionesTF.setText(miFactura.observacionesTF);
+               break;
                
-    }//GEN-LAST:event_LimpiarMenuActionPerformed
-
-    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        // TODO add your handling code here:
-          Factura dataFactura = new Factura();
-        //condiciones de texto en blanco
-        //Recojer datos de todos los campos de texto
-         if (NfacturaTF.getText().equals("")) {
-            NfacturaTF.setBackground(Color.pink);
-            }else{
-            NfacturaTF.setBackground(Color.WHITE);
-            dataFactura.numeroFactura = NfacturaTF.getText();
-        }
-         
-        if (NombreTF.getText().equals("")) {
-            NombreTF.setBackground(Color.pink);
-            }else{
-            NombreTF.setBackground(Color.WHITE);
-            dataFactura.nombre = NombreTF.getText();
-        }
+               } 
+               
+            }   
         
-        if (ApellidosTF.getText().equals("")) {
-            ApellidosTF.setBackground(Color.pink);
-            }else{
-            ApellidosTF.setBackground(Color.WHITE);
-            dataFactura.apellidos = ApellidosTF.getText();
-        }
-        
-        if (CalleTF.getText().equals("")) {
-            CalleTF.setBackground(Color.pink);
-            }else{
-            CalleTF.setBackground(Color.WHITE);
-            dataFactura.calle = CalleTF.getText();
-        }
-         
-        if (CpTF.getText().equals("")) {
-            CpTF.setBackground(Color.pink);
-            }else{
-            CpTF.setBackground(Color.WHITE);
-            dataFactura.cP = CpTF.getText();
-        }
-         
-        if (CiudadTF.getText().equals("")) {
-            CiudadTF.setBackground(Color.pink);
-            }else{
-            CiudadTF.setBackground(Color.WHITE);
-            dataFactura.ciudad = CiudadTF.getText();
-        }
-        
-        if (ConseptoTF0.getText().equals("")) {
-            ConseptoTF0.setBackground(Color.pink);
-            }else{
-            ConseptoTF0.setBackground(Color.WHITE);
-            dataFactura.conseptoTF0 = ConseptoTF0.getText();
-        }
-        
-        if (ConseptoTF1.getText().equals("")) {
-            ConseptoTF1.setBackground(Color.pink);
-            }else{
-            ConseptoTF1.setBackground(Color.WHITE);
-            dataFactura.conseptoTF1 = ConseptoTF1.getText();
-        }
-         
-        if (ConseptoTF2.getText().equals("")) {
-            ConseptoTF2.setBackground(Color.pink);
-            }else{
-            ConseptoTF2.setBackground(Color.WHITE);
-            dataFactura.conseptoTF2 = ConseptoTF2.getText();
-        }
-        
-        if (ConseptoTF3.getText().equals("")) {
-            ConseptoTF3.setBackground(Color.pink);
-            }else{
-            ConseptoTF3.setBackground(Color.WHITE);
-            dataFactura.conseptoTF3 = ConseptoTF3.getText();
-        }
-        
-        if (PrecioTF0.getText().equals("")) {
-            PrecioTF0.setBackground(Color.pink);
-            }else{
-            PrecioTF0.setBackground(Color.WHITE);
-            dataFactura.precioTF0 = PrecioTF0.getText();    
-        }
-         
-        if (PrecioTF1.getText().equals("")) {
-            PrecioTF1.setBackground(Color.pink);
-            }else{
-            PrecioTF1.setBackground(Color.white);
-            dataFactura.precioTF1 = PrecioTF1.getText();
-        }
-         
-        if (PrecioTF2.getText().equals("")) {
-            PrecioTF2.setBackground(Color.pink);
-            }else{
-            PrecioTF2.setBackground(Color.white);
-             dataFactura.precioTF2 = PrecioTF2.getText();
-        }
-           
-        if (PrecioTF3.getText().equals("")) {
-            PrecioTF3.setBackground(Color.pink);
-            }else{
-            PrecioTF3.setBackground(Color.pink);
-            dataFactura.precioTF3 = PrecioTF3.getText();
-        }
-        if (ObservacionesTF.getText().equals("")) {
-            ObservacionesTF.setBackground(Color.pink);
-            }else{
-            ObservacionesTF.setBackground(Color.white);
-            dataFactura.observacionesTF = ObservacionesTF.getText();
-        }
-          
-         
-       
-          if ( CiudadTF.getText().equals("") && CpTF.getText().equals("")
-                && CalleTF.getText().equals("") && ApellidosTF.getText().equals("") 
-                && NombreTF.getText().equals("") && NfacturaTF.getText().equals("") 
-                && ConseptoTF0.getText().equals("") && PrecioTF0.getText().equals("")
-                && ConseptoTF1.getText().equals("") && PrecioTF1.getText().equals("")
-                && ConseptoTF2.getText().equals("") && PrecioTF2.getText().equals("")
-                && ConseptoTF3.getText().equals("") && PrecioTF3.getText().equals("")
-            ){
-            
-             MensajeTF.setText("Rellena Todos los campos de color rosa");
-            }else{
-             //Abrir una nueva ventana 
-        dispose();
-        FacturaCompleta NuevaVentana = new FacturaCompleta();
-        NuevaVentana.setVisible(true);
-        }      
-          
-            
-    }//GEN-LAST:event_jMenuItem14ActionPerformed
-
-    private void GuardarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarMenuActionPerformed
-        // TODO add your handling code here:
-          
         Factura dataFactura = new Factura();
         //condiciones de texto en blanco
         //Recojer datos de todos los campos de texto
@@ -1260,30 +1543,209 @@ public class ContabilidadGUI extends javax.swing.JFrame {
              MensajeTF.setText("Rellena Todos los campos de color rosa");
             }else{
              //Guardar todos los datos en un archivo CSV
-            Guardar guardar = new Guardar();
+            Temp guardar = new Temp();
             guardar.guardarFactura(dataFactura.getFacturaCSV());
             MensajeTF.setText("");
-        }      
-    }//GEN-LAST:event_GuardarMenuActionPerformed
-
-    private void CrearNuevaFacturaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearNuevaFacturaMenuActionPerformed
-        // TODO add your handling code here:
+                  
+             //dispose();
+        verFactura NuevaVentana = new verFactura();
+        NuevaVentana.setVisible(true);
+        
+        }  
+        }
+        
+        if (nombreRB.isSelected()) {
+            
+             ArrayList<Factura> miFacturas = LeerArchivo.leerFacturas("todasFacturas.csv");
+             for (Factura miFactura : miFacturas) {
+                 
+               if (NombreTF.getText().equals(miFactura.nombre)) {
+                   
+                     NfacturaTF.setText(miFactura.numeroFactura);
+               NombreTF.setText(miFactura.nombre);
+               ApellidosTF.setText(miFactura.apellidos);
+               CalleTF.setText(miFactura.calle);
+               CpTF.setText(miFactura.cP);
+               CiudadTF.setText(miFactura.ciudad);
+               ConseptoTF0.setText(miFactura.conseptoTF0);
+               ConseptoTF1.setText(miFactura.conseptoTF1);
+               ConseptoTF2.setText(miFactura.conseptoTF2);
+               ConseptoTF3.setText(miFactura.conseptoTF3);
+               PrecioTF0.setText(miFactura.precioTF0);
+               PrecioTF1.setText(miFactura.precioTF1);
+               PrecioTF2.setText(miFactura.precioTF2);
+               PrecioTF3.setText(miFactura.precioTF3);
+               ObservacionesTF.setText(miFactura.observacionesTF);
+               break;
+               }
+            } 
+              Factura dataFactura = new Factura();
+        //condiciones de texto en blanco
+        //Recojer datos de todos los campos de texto
+         if (NfacturaTF.getText().equals("")) {
+            NfacturaTF.setBackground(Color.pink);
+            }else{
+            NfacturaTF.setBackground(Color.WHITE);
+            dataFactura.numeroFactura = NfacturaTF.getText();
+        }
          
-    // Mostrar mensaje con JOptionPanel para recojer el nombre del archivo nuevo
-    String name = JOptionPane.showInputDialog(Top, "Nombre del documento ");
-    guardarArchivo = name+".CSV";
-    //Comprobar si funciona todo :D
-    System.out.printf("El Archivo para guardar es "+ name+".CSV");
-    //System.exit(0);
+        if (NombreTF.getText().equals("")) {
+            NombreTF.setBackground(Color.pink);
+            }else{
+            NombreTF.setBackground(Color.WHITE);
+            dataFactura.nombre = NombreTF.getText();
+        }
         
+        if (ApellidosTF.getText().equals("")) {
+            ApellidosTF.setBackground(Color.pink);
+            }else{
+            ApellidosTF.setBackground(Color.WHITE);
+            dataFactura.apellidos = ApellidosTF.getText();
+        }
         
-    }//GEN-LAST:event_CrearNuevaFacturaMenuActionPerformed
+        if (CalleTF.getText().equals("")) {
+            CalleTF.setBackground(Color.pink);
+            }else{
+            CalleTF.setBackground(Color.WHITE);
+            dataFactura.calle = CalleTF.getText();
+        }
+         
+        if (CpTF.getText().equals("")) {
+            CpTF.setBackground(Color.pink);
+            }else{
+            CpTF.setBackground(Color.WHITE);
+            dataFactura.cP = CpTF.getText();
+        }
+         
+        if (CiudadTF.getText().equals("")) {
+            CiudadTF.setBackground(Color.pink);
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
+        }
+        
+         if (CiudadTF.getText().equals("")) {
+            CiudadTF.setBackground(Color.pink);
+            }else{
+            CiudadTF.setBackground(Color.WHITE);
+            dataFactura.ciudad = CiudadTF.getText();
+        }
+         
+         if (ConseptoTF0.getText().equals("")) {
+            ConseptoTF0.setBackground(Color.pink);
+            }else{
+            ConseptoTF0.setBackground(Color.WHITE);
+            dataFactura.conseptoTF0 = ConseptoTF0.getText();
+        }
+         
+         if (ConseptoTF1.getText().equals("")) {
+            ConseptoTF1.setBackground(Color.pink);
+            }else{
+            ConseptoTF1.setBackground(Color.WHITE);
+            dataFactura.conseptoTF1 = ConseptoTF1.getText();
+        }
+         
+        if (ConseptoTF2.getText().equals("")) {
+            ConseptoTF2.setBackground(Color.pink);
+            }else{
+            ConseptoTF2.setBackground(Color.WHITE);
+            dataFactura.conseptoTF2 = ConseptoTF2.getText();
+        }
+        
+         if (ConseptoTF3.getText().equals("")) {
+            ConseptoTF3.setBackground(Color.pink);
+            }else{
+            ConseptoTF3.setBackground(Color.WHITE);
+            dataFactura.conseptoTF3 = ConseptoTF3.getText();
+        }
+        
+        if (PrecioTF0.getText().equals("")) {
+            PrecioTF0.setBackground(Color.pink);
+            }else{
+            PrecioTF0.setBackground(Color.WHITE);
+            dataFactura.precioTF0 = PrecioTF0.getText();    
+        }
+         
+        if (PrecioTF1.getText().equals("")) {
+            PrecioTF1.setBackground(Color.pink);
+            }else{
+            PrecioTF1.setBackground(Color.white);
+            dataFactura.precioTF1 = PrecioTF1.getText();
+        }
+        
+        if (PrecioTF2.getText().equals("")) {
+            PrecioTF2.setBackground(Color.pink);
+            }else{
+            PrecioTF2.setBackground(Color.white);
+            dataFactura.precioTF2 = PrecioTF2.getText();
+         }
+        
+        if (PrecioTF3.getText().equals("")) {
+            PrecioTF3.setBackground(Color.pink);
+            }else{
+            PrecioTF3.setBackground(Color.white);
+            dataFactura.precioTF3 = PrecioTF3.getText();
+         }
+        
+        if (ObservacionesTF.getText().equals("")) {
+            ObservacionesTF.setBackground(Color.pink);
+            }else{
+            ObservacionesTF.setBackground(Color.white);
+            dataFactura.observacionesTF = ObservacionesTF.getText();
+            }
+        //Condicion para poder guardar. Campos obligatorios.
+        if ( CiudadTF.getText().equals("") && CpTF.getText().equals("")
+                && CalleTF.getText().equals("") && ApellidosTF.getText().equals("") 
+                && NombreTF.getText().equals("") && NfacturaTF.getText().equals("") 
+                && ConseptoTF0.getText().equals("") && PrecioTF1.getText().equals("")
+            ){
+            
+             MensajeTF.setText("Rellena Todos los campos de color rosa");
+            }else{
+             //Guardar todos los datos en un archivo CSV
+            Temp guardar = new Temp();
+            guardar.guardarFactura(dataFactura.getFacturaCSV());
+            MensajeTF.setText("");
+                  
+             //dispose();
+        verFactura NuevaVentana = new verFactura();
+        NuevaVentana.setVisible(true);
+        
+        } 
+        }
+        
+            
+    }//GEN-LAST:event_BuscarMunuActionPerformed
+
+    private void nFacturaRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nFacturaRBActionPerformed
+
+        
+        // TODO add your handling code here:
+        if (nFacturaRB.isSelected()) {
+            BuscarFactura.setEnabled(true);
+            BuscarMunu.setEnabled(true);
+        }else{
+        BuscarFactura.setEnabled(false);
+        BuscarMunu.setEnabled(false);
+        }
+    }//GEN-LAST:event_nFacturaRBActionPerformed
+
+    private void nombreRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRBActionPerformed
+
+        // TODO add your handling code here:
+          if (nombreRB.isSelected()) {
+            BuscarFactura.setEnabled(true);
+            BuscarMunu.setEnabled(true);
+        }else{
+        BuscarFactura.setEnabled(false);
+        BuscarMunu.setEnabled(false);
+        }
+    }//GEN-LAST:event_nombreRBActionPerformed
 
     /**
      * @param rgs the command line arguments
      */
     public static void main(String args[]) {
-        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1314,19 +1776,14 @@ public class ContabilidadGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ContabilidadGUI().setVisible(true);
-           
             }
         });
-        
-           
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem AbrirFacturaMenu;
     private javax.swing.JTextField ApellidosTF;
-    private javax.swing.JMenu Archivos;
-    private javax.swing.JLabel Backgraund;
     private javax.swing.JButton BuscarFactura;
+    private javax.swing.JMenuItem BuscarMunu;
     private javax.swing.JTextField CalleTF;
     private javax.swing.JMenuItem CargarUltimaFacturaMenu;
     private javax.swing.JTextField CiudadTF;
@@ -1336,15 +1793,10 @@ public class ContabilidadGUI extends javax.swing.JFrame {
     private javax.swing.JTextField ConseptoTF3;
     private javax.swing.JLabel ConseptoTl;
     private javax.swing.JTextField CpTF;
-    private javax.swing.JMenuItem CrearNuevaFacturaMenu;
-    private javax.swing.JMenuItem CuardarComoMenu;
-    private javax.swing.JMenu Editar;
     private javax.swing.JLabel ErrorTL;
-    private javax.swing.JMenuItem GuardarMenu;
+    private javax.swing.JMenuItem GuardarFacturaMenu;
     private javax.swing.JButton GuardarTodo;
-    private javax.swing.JMenu Help;
-    private javax.swing.JMenuItem ImprimirMenu;
-    private javax.swing.JMenuItem LimpiarMenu;
+    private javax.swing.JMenuItem LimpiarPantallaMenu;
     private javax.swing.JLabel MensajeTF;
     private javax.swing.JLabel Nfactura;
     private javax.swing.JTextField NfacturaTF;
@@ -1360,29 +1812,20 @@ public class ContabilidadGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem SalirMenu;
     private javax.swing.JLabel Top;
     private javax.swing.JButton VerFacturaCompleta;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JPopupMenu.Separator jSeparator3;
-    private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JRadioButton nFacturaRB;
+    private javax.swing.JRadioButton nombreRB;
     // End of variables declaration//GEN-END:variables
-
-    private void setLabel(String good) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

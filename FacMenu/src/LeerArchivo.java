@@ -16,8 +16,7 @@ static ArrayList<Factura> leerFacturas(String fString){
 
             String line = null;
                 while ((line = br.readLine()) != null) {
-                    //System.out.println(line);
-
+                   
                     Factura miFactura = new Factura();
 
                     String facturaEnlinea = line;
@@ -41,6 +40,7 @@ static ArrayList<Factura> leerFacturas(String fString){
                     miFactura.observacionesTF = facturasPorPartes[14];
 
                     arrayFacturas.add(miFactura);
+                  
                 }
 
         }catch(IOException e){
@@ -52,7 +52,9 @@ static ArrayList<Factura> leerFacturas(String fString){
                  //do something with e... log, perhaps rethrow etc.
             }
         }
-
+    if (true) {
+        
+    }
         return arrayFacturas;
 
     }

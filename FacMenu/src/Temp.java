@@ -1,20 +1,27 @@
 
-import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-public class Guardar   {
-   //Guardar los datos en un fichero 
-   public static void guardarFactura(String Guardar){
+/**
+ * 
+ * @author Sammy Guergachi <sguergachi at gmail.com>
+ */
+public class Temp {
+ public static void guardarFactura(String Guardar){
     
         Factura factura = new Factura();
              Writer writer = null;
             
        
         try{  
-            writer = new FileWriter("todasFacturas.CSV");
+            writer = new FileWriter("Temp.CSV");
             writer.write(Guardar);
        
             }catch(IOException e){ 
@@ -29,6 +36,4 @@ public class Guardar   {
             }     
             }
         } 
-    }
-
- 
+}

@@ -11,15 +11,15 @@ import java.util.ArrayList;
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class FacturaCompleta extends javax.swing.JFrame {
+public class verFactura extends javax.swing.JFrame {
 
     /**
      * Creates new form FacturaCompleta
      */
-    public FacturaCompleta() {
+    public verFactura() {
         initComponents();
         
-        ArrayList<Factura> miFacturas = LeerArchivo.leerFacturas("todasFacturas.csv");
+        ArrayList<Factura> miFacturas = LeerArchivo.leerFacturas("Temp.csv");
 
 
            for (Factura miFactura : miFacturas) {
@@ -87,9 +87,7 @@ public class FacturaCompleta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Factura Completa");
         setBounds(new java.awt.Rectangle(525, 23, 576, 650));
-        setMaximumSize(new java.awt.Dimension(576, 650));
         setMinimumSize(new java.awt.Dimension(576, 650));
-        setPreferredSize(new java.awt.Dimension(576, 650));
         setSize(new java.awt.Dimension(576, 650));
         getContentPane().setLayout(null);
 
@@ -184,6 +182,8 @@ public class FacturaCompleta extends javax.swing.JFrame {
         getContentPane().add(FondoFactura);
         FondoFactura.setBounds(0, 0, 576, 640);
 
+        jMenuBar1.setToolTipText("");
+
         jMenu1.setForeground(new java.awt.Color(0, 0, 0));
         jMenu1.setText("Archivo");
 
@@ -203,6 +203,11 @@ public class FacturaCompleta extends javax.swing.JFrame {
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.META_MASK));
         jMenuItem3.setText("Salir");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
@@ -216,10 +221,15 @@ public class FacturaCompleta extends javax.swing.JFrame {
 
         // TODO add your handling code here:
           // TODO add your handling code here:
-        dispose();
+        //dispose();
         ContabilidadGUI VentanaPrencipal = new ContabilidadGUI();
         VentanaPrencipal.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
