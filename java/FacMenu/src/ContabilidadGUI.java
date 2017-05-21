@@ -313,11 +313,14 @@ public class ContabilidadGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+   
     private void VerFacturaCompletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerFacturaCompletaActionPerformed
 Factura dataFactura = new Factura();
         //condiciones de texto en blanco
         //Recojer datos de todos los campos de texto
+        
+      
+        
          if (NfacturaTF.getText().equals("")) {
             NfacturaTF.setBackground(Color.pink);
             }else{
