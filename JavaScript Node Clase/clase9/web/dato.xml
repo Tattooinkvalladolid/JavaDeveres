@@ -1,0 +1,15 @@
+
+//xml deveres tareea 0
+
+<coche>
+	<marca>"BMW"</marca>
+	<modelo>"730"</modelo>
+	<color>"Rojo"</color>
+</coche>
+
+<persona>
+	<nombre>""</nombre>
+	<edad>""</edad>
+	<altura>""</altura>
+	<nacionalidad>""</nacionalidad>
+</persona>

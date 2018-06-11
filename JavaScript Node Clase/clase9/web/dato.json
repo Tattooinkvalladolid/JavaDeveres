@@ -1,0 +1,14 @@
+{
+	"coche":{
+		"marca":"BMW",
+		"modelo":"730",
+		"color":"Rojo"
+	},
+
+	"perosna":{
+		"nombre":"",
+		"edad":"",
+		"altura":"",
+		"nacionalidad":""
+	}
+}
